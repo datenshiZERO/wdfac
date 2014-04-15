@@ -238,3 +238,42 @@
             %p <a href="https://github.com/bryanbibat/homepage">Fork this on Github</a>
     %script{:type => "text/javascript", :src => "//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"}\
     :javascript
+      var Game = {
+        initialize: function() {
+          this.lanes = { 
+            player1: { top: [], mid: [], bot: [] },
+            player2: { top: [], mid: [], bot: [] }
+          };
+          this.barracks = { 
+            player1: { top: "paper", mid: "paper", bot: "paper" },
+            player2: { top: "paper", mid: "paper", bot: "paper" }
+          };
+          this.health = { 
+            player1: { top: 20, mid: 30, bot: 30, base: 40 },
+            player2: { top: 20, mid: 30, bot: 20, base: 40 }
+          };
+          this.ticks = 0;
+          this.started = true;
+          this.ended = false;
+          this.paused = false;
+        },
+        spawnCreeps: function() {
+        },
+        moveCreeps: function() {
+        },
+        resolveCreepBattles: function() {
+        },
+        update: function() {
+          if (this.paused === true || this.ended === true || this.started === false) return;
+          this.spawnCreeps();
+          this.moveCreeps();
+          this.resolveCreepBattles();
+        },
+        draw: function() {
+          if (this.paused === true || this.ended === true || this.started === false) return;
+          this.clearSprites();
+          this.drawSprites();
+          this.updateScoreDisplay();
+        }
+      }
+
