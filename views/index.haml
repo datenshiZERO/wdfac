@@ -12,38 +12,222 @@
     %meta{:content => "A portfolio website of a software engineer", :property => "og:description"}/
     %meta{:content => "website", :property => "og:type"}/
     %meta{:content => "http://bryanbibat.net/", :property => "og:url"}/
+    :css
+      td { 
+        background: #d18b47;
+        text-align: center;
+      }
+      td.score-space {
+        background: white;
+      }
+
+      .fa-square-o {
+        color: #d18b47;
+      }
+      .fa-shield, .fa-ban {
+        color: gray;
+      }
+      .pl {
+        color: white;
+      }
+      p.controls {
+        text-align: center;
+      }
     // %meta{:content => image_path("opengraph.png"), :property => "og:image"}/
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     .navbar.navbar-default.navbar-static-top
       .container
         .navbar-header
-          %a.navbar-brand{:href => "#"} WDFAC
+          %a.navbar-brand{:href => "#"} Wave Defense of Font Awesome Creeps
 
     .container.main-container
       .row
-        .col-md-12
+        .col-lg-6.col-lg-offset-3
           %table.table.table-bordered
             %tr
+              %td 
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-scissors.fa-flip-horizontal.fa-stack-1x
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa-square-o.fa-stack-2x
+                  %i.fa.fa-file.fa-flip-horizontal.fa-stack-1x
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-thumbs-down.fa-flip-horizontal.fa-stack-1x
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-ban.fa-stack-2x
+                  %i.fa.fa-scissors.fa-flip-horizontal.fa-stack-1x
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-building-o.fa-2x.fa-stack-2x
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-ban.fa-stack-2x
+                  %i.fa.fa-thumbs-down.fa-stack-1x
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-scissors.fa-stack-1x
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-file.fa-stack-1x
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-thumbs-down.fa-stack-1x
+            %tr
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-thumbs-up.fa-rotate-90.fa-stack-1x
+              %td.score-space{colspan: 3, rowspan: 7}
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-ban.fa-stack-2x
+                  %i.fa.fa-file.fa-stack-1x
+              %td.score-space{colspan: 3, rowspan: 7}
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-cut.fa-rotate-90.fa-stack-1x
+            %tr
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-shield.fa-stack-2x
+                  %i.fa.fa-file.fa-stack-1x
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-shield.fa-stack-2x
+                  %i.fa.fa-thumbs-up.fa-rotate-90.fa-stack-1x
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-shield.fa-stack-2x
+                  %i.fa.fa-cut.fa-rotate-90.fa-stack-1x
+            %tr
               %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+            %tr
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+            %tr
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-file.fa-stack-1x.pl
+            %tr
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-shield.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-shield.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-shield.fa-stack-2x
+            %tr
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-thumbs-down.fa-rotate-270.fa-stack-1x.pl
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-ban.fa-stack-2x
+                  %i.fa.fa-scissors.fa-rotate-270.fa-stack-1x.pl
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-thumbs-up.fa-rotate-270.fa-stack-1x.pl
+            %tr
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-scissors.fa-flip-horizontal.fa-stack-1x.pl
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-file.fa-stack-1x.pl
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-ban.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-building-o.fa-stack-2x.pl
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-ban.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+                  %i.fa.fa-scissors.fa-stack-1x.pl
+              %td
+                %span.fa-stack.fa-lg
+                  %i.fa.fa-square-o.fa-stack-2x
+         
+          %p.controls
+            %button.btn.btn-default.btn-lg
+              %i.fa.fa-gears.fa-lg
+            &nbsp;
+            &nbsp;
+            %button.btn.btn-default.btn-lg.btn-primary
+              %i.fa.fa-thumbs-up.fa-rotate-270.fa-lg.pl
+            %button.btn.btn-default.btn-lg
+              %i.fa.fa-file.fa-lg
+            %button.btn.btn-default.btn-lg
+              %i.fa.fa-scissors.fa-rotate-270.fa-lg
+            &nbsp;
+            &nbsp;
+            %button.btn.btn-default.btn-lg
+              %i.fa.fa-pause.fa-lg
+          %p.controls
+            %button.btn.btn-default.btn-lg
+              %i.fa.fa-thumbs-up.fa-flip-horizontal.fa-lg
+            %button.btn.btn-default.btn-lg.btn-primary
+              %i.fa.fa-file.fa-lg.pl
+            %button.btn.btn-default.btn-lg
+              %i.fa.fa-scissors.fa-flip-horizontal.fa-lg
+            &nbsp;
+            &nbsp;
+            %button.btn.btn-default.btn-lg
+              %i.fa.fa-thumbs-up.fa-lg
+            %button.btn.btn-default.btn-lg
+              %i.fa.fa-file.fa-lg
+            %button.btn.btn-default.btn-lg.btn-primary
+              %i.fa.fa-scissors.fa-lg.pl
 
-
-
-
+      .row
+        .col-lg-12-
           .footer
             %p.copyright
               Copyright &copy;2014
