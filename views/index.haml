@@ -17,13 +17,31 @@
         background: #d18b47;
         text-align: center;
       }
+      .fa-sun-o {
+        color: #d18b47;
+      }
+      td.r-draw {
+        background: lightyellow;
+      }
+      td.r-draw i.fa-sun-o {
+        color: red;
+      }
+      td.r-win {
+        background: green;
+      }
+      td.r-win i.fa-sun-o {
+        color: green;
+      }
+      td.r-lose {
+        background: red;
+      }
+      td.r-lose i.fa-sun-o {
+        color: red;
+      }
       td.score-space {
         background: white;
       }
 
-      .fa-square-o {
-        color: #d18b47;
-      }
       .fa-shield, .fa-ban {
         color: gray;
       }
@@ -46,169 +64,193 @@
         .col-lg-6.col-lg-offset-3
           %table.table.table-bordered
             %tr
-              %td 
+              %td#l12 
                 %span.fa-stack.fa-lg
-                  %i#l12-b.fa.fa-square-o.fa-stack-2x
+                  %i#l12-b.fa.fa-sun-o.fa-stack-2x
                   %i#l12-f.fa.fa-scissors.fa-flip-horizontal.fa-stack-1x
-              %td
+              %td#l13
                 %span.fa-stack.fa-lg
-                  %i#l13-b.fa-square-o.fa-stack-2x
+                  %i#l13-b.fa.fa-sun-o.fa-stack-2x
                   %i#l13-f.fa.fa-file.fa-flip-horizontal.fa-stack-1x
-              %td
+              %td#l14
                 %span.fa-stack.fa-lg
-                  %i#l14-b.fa.fa-square-o.fa-stack-2x
+                  %i#l14-b.fa.fa-sun-o.fa-stack-2x
                   %i#l14-f.fa.fa-thumbs-down.fa-flip-horizontal.fa-stack-1x
-              %td
+              %td#l15
                 %span.fa-stack.fa-lg
                   %i#l15-b.fa.fa-ban.fa-stack-2x
                   %i#l15-f.fa.fa-scissors.fa-flip-horizontal.fa-stack-1x
-              %td
+              %td#b2
                 %span.fa-stack.fa-lg
                   %i#b2-b.fa.fa-building-o.fa-2x.fa-stack-2x
-              %td
+              %td#r15
                 %span.fa-stack.fa-lg
                   %i#r15-b.fa.fa-ban.fa-stack-2x
                   %i#r15-f.fa.fa-thumbs-down.fa-stack-1x
-              %td
+              %td#r14
                 %span.fa-stack.fa-lg
-                  %i#r14-b.fa.fa-square-o.fa-stack-2x
+                  %i#r14-b.fa.fa-sun-o.fa-stack-2x
                   %i#r14-f.fa.fa-scissors.fa-stack-1x
-              %td
+              %td#r13
                 %span.fa-stack.fa-lg
-                  %i#r13-b.fa.fa-square-o.fa-stack-2x
+                  %i#r13-b.fa.fa-sun-o.fa-stack-2x
                   %i#r13-f.fa.fa-file.fa-stack-1x
-              %td
+              %td#r12
                 %span.fa-stack.fa-lg
-                  %i#r12-b.fa.fa-square-o.fa-stack-2x
+                  %i#r12-b.fa.fa-sun-o.fa-stack-2x
                   %i#r12-f.fa.fa-thumbs-down.fa-stack-1x
             %tr
-              %td
+              %td#l11
                 %span.fa-stack.fa-lg
-                  %i#l11-b.fa.fa-square-o.fa-stack-2x
+                  %i#l11-b.fa.fa-sun-o.fa-stack-2x
                   %i#l11-f.fa.fa-thumbs-up.fa-rotate-90.fa-stack-1x
-              %td.score-space{colspan: 3, rowspan: 7}
-              %td
+              %td.score-space{colspan: 3, rowspan: 3}
+                %p 
+                  Turn:
+                  %span#turn 
+                %p 
+                  Score:
+                  %span#game-score 
+              %td#m7
                 %span.fa-stack.fa-lg
                   %i#m7-b.fa.fa-ban.fa-stack-2x
                   %i#m7-f.fa.fa-file.fa-stack-1x
-              %td.score-space{colspan: 3, rowspan: 7}
-              %td
+              %td.score-space{colspan: 3, rowspan: 3}
+                %p 
+                  Enemy Base/Shields:
+                %p 
+                  %span#p2base 0
+                  |
+                  %span#p2shields 0 0 0
+                %p 
+                  Your Base/Shields:
+                %p 
+                  %span#p1base 0
+                  |
+                  %span#p1shields 0 0 0
+              %td#r11
                 %span.fa-stack.fa-lg
-                  %i#r11-b.fa.fa-square-o.fa-stack-2x
+                  %i#r11-b.fa.fa-sun-o.fa-stack-2x
                   %i#r11-f.fa.fa-cut.fa-rotate-90.fa-stack-1x
             %tr
-              %td
+              %td#l10
                 %span.fa-stack.fa-lg
                   %i#l10-b.fa.fa-shield.fa-stack-2x
                   %i#l10-f.fa.fa-file.fa-stack-1x
-              %td
+              %td#m6
                 %span.fa-stack.fa-lg
                   %i#m6-b.fa.fa-shield.fa-stack-2x
                   %i#m6-f.fa.fa-thumbs-up.fa-rotate-90.fa-stack-1x
-              %td
+              %td#r10
                 %span.fa-stack.fa-lg
                   %i#r10-b.fa.fa-shield.fa-stack-2x
                   %i#r10-f.fa.fa-cut.fa-rotate-90.fa-stack-1x
             %tr
-              %td
+              %td#l9
                 %span.fa-stack.fa-lg
-                  %i#l9-b.fa.fa-square-o.fa-stack-2x
+                  %i#l9-b.fa.fa-sun-o.fa-stack-2x
                   %i#l9-f.fa.fa-cut.fa-rotate-90.fa-stack-1x
-              %td
+              %td#m5
                 %span.fa-stack.fa-lg
-                  %i#m5-b.fa.fa-square-o.fa-stack-2x
+                  %i#m5-b.fa.fa-sun-o.fa-stack-2x
                   %i#m5-f.fa.fa-cut.fa-rotate-90.fa-stack-1x
-              %td
+              %td#r9
                 %span.fa-stack.fa-lg
-                  %i#r9-b.fa.fa-square-o.fa-stack-2x
+                  %i#r9-b.fa.fa-sun-o.fa-stack-2x
                   %i#r9-f.fa.fa-cut.fa-rotate-90.fa-stack-1x
             %tr
-              %td
+              %td#l8
                 %span.fa-stack.fa-lg
-                  %i#l8-b.fa.fa-square-o.fa-stack-2x
+                  %i#l8-b.fa.fa-sun-o.fa-stack-2x
                   %i#l8-f.fa.fa-cut.fa-rotate-90.fa-stack-1x
-              %td
+              %td.score-space{colspan: 3, rowspan: 4}
+                %p#player-base
+                %p#player-shields
+              %td#m4
                 %span.fa-stack.fa-lg
-                  %i#m4-b.fa.fa-square-o.fa-stack-2x
+                  %i#m4-b.fa.fa-sun-o.fa-stack-2x
                   %i#m4-f.fa.fa-cut.fa-rotate-90.fa-stack-1x
-              %td
+              %td.score-space{colspan: 3, rowspan: 4}
+                %p#enemy-base
+                %p#enemy-shields
+              %td#r8
                 %span.fa-stack.fa-lg
-                  %i#r8-b.fa.fa-square-o.fa-stack-2x
+                  %i#r8-b.fa.fa-sun-o.fa-stack-2x
                   %i#r8-f.fa.fa-cut.fa-rotate-90.fa-stack-1x
             %tr
-              %td
+              %td#l7
                 %span.fa-stack.fa-lg
-                  %i#l7-b.fa.fa-square-o.fa-stack-2x
+                  %i#l7-b.fa.fa-sun-o.fa-stack-2x
                   %i#l7-f.fa.fa-cut.fa-rotate-90.fa-stack-1x
-              %td
+              %td#m3
                 %span.fa-stack.fa-lg
-                  %i#m3-b.fa.fa-square-o.fa-stack-2x
+                  %i#m3-b.fa.fa-sun-o.fa-stack-2x
                   %i#m3-f.fa.fa-cut.fa-rotate-90.fa-stack-1x
-              %td
+              %td#r7
                 %span.fa-stack.fa-lg
-                  %i#r7-b.fa.fa-square-o.fa-stack-2x
+                  %i#r7-b.fa.fa-sun-o.fa-stack-2x
                   %i#r7-f.fa.fa-file.fa-stack-1x.pl
             %tr
-              %td
+              %td#l6
                 %span.fa-stack.fa-lg
                   %i#l6-b.fa.fa-shield.fa-stack-2x
                   %i#l6-f.fa.fa-file.fa-stack-1x.pl
-              %td
+              %td#m2
                 %span.fa-stack.fa-lg
                   %i#m2-b.fa.fa-shield.fa-stack-2x
                   %i#m2-f.fa.fa-file.fa-stack-1x.pl
-              %td
+              %td#r6
                 %span.fa-stack.fa-lg
                   %i#r6-b.fa.fa-shield.fa-stack-2x
                   %i#r6-f.fa.fa-file.fa-stack-1x.pl
             %tr
-              %td
+              %td#l5
                 %span.fa-stack.fa-lg
-                  %i#l5-b.fa.fa-square-o.fa-stack-2x
+                  %i#l5-b.fa.fa-sun-o.fa-stack-2x
                   %i#l5-f.fa.fa-thumbs-down.fa-rotate-270.fa-stack-1x.pl
-              %td
+              %td#m1
                 %span.fa-stack.fa-lg
                   %i#m1-b.fa.fa-ban.fa-stack-2x
                   %i#m1-f.fa.fa-scissors.fa-rotate-270.fa-stack-1x.pl
-              %td
+              %td#r5
                 %span.fa-stack.fa-lg
-                  %i#r5-b.fa.fa-square-o.fa-stack-2x
+                  %i#r5-b.fa.fa-sun-o.fa-stack-2x
                   %i#r5-f.fa.fa-thumbs-up.fa-rotate-270.fa-stack-1x.pl
             %tr
-              %td
+              %td#l4
                 %span.fa-stack.fa-lg
-                  %i#l4-b.fa.fa-square-o.fa-stack-2x
+                  %i#l4-b.fa.fa-sun-o.fa-stack-2x
                   %i#l4-f.fa.fa-scissors.fa-flip-horizontal.fa-stack-1x.pl
-              %td
+              %td#l3
                 %span.fa-stack.fa-lg
-                  %i#l3-b.fa.fa-square-o.fa-stack-2x
+                  %i#l3-b.fa.fa-sun-o.fa-stack-2x
                   %i#l3-f.fa.fa-file.fa-stack-1x.pl
-              %td
+              %td#l2
                 %span.fa-stack.fa-lg
-                  %i#l2-b.fa.fa-square-o.fa-stack-2x
+                  %i#l2-b.fa.fa-sun-o.fa-stack-2x
                   %i#l2-f.fa.fa-file.fa-stack-1x.pl
-              %td
+              %td#l1
                 %span.fa-stack.fa-lg
                   %i#l1-b.fa.fa-ban.fa-stack-2x
                   %i#l1-f.fa.fa-file.fa-stack-1x.pl
-              %td
+              %td#b1
                 %span.fa-stack.fa-lg
                   %i#b1-b.fa.fa-building-o.fa-stack-2x.pl
-              %td
+              %td#r1
                 %span.fa-stack.fa-lg
                   %i#r1-b.fa.fa-ban.fa-stack-2x
                   %i#r1-f.fa.fa-file.fa-stack-1x.pl
-              %td
+              %td#r2
                 %span.fa-stack.fa-lg
-                  %i#r2-b.fa.fa-square-o.fa-stack-2x
+                  %i#r2-b.fa.fa-sun-o.fa-stack-2x
                   %i#r2-f.fa.fa-file.fa-stack-1x.pl
-              %td
+              %td#r3
                 %span.fa-stack.fa-lg
-                  %i#r3-b.fa.fa-square-o.fa-stack-2x
+                  %i#r3-b.fa.fa-sun-o.fa-stack-2x
                   %i#r3-f.fa.fa-scissors.fa-stack-1x.pl
-              %td
+              %td#r4
                 %span.fa-stack.fa-lg
-                  %i#r4-b.fa.fa-square-o.fa-stack-2x
+                  %i#r4-b.fa.fa-sun-o.fa-stack-2x
                   %i#r4-f.fa.fa-scissors.fa-stack-1x.pl
          
           %p.controls
@@ -260,18 +302,24 @@
             player1: { top: [], mid: [], bot: [] },
             player2: { top: [], mid: [], bot: [] }
           };
+          this.results = {};
           this.barracks = { 
             player1: { top: "paper", mid: "paper", bot: "paper" },
             player2: { top: "paper", mid: "paper", bot: "paper" }
           };
           this.health = { 
-            player1: { top: 20, mid: 30, bot: 30, base: 40 },
-            player2: { top: 20, mid: 30, bot: 20, base: 40 }
+            player1: { top: 5, mid: 10, bot: 5, base: 10 },
+            player2: { top: 5, mid: 10, bot: 5, base: 10 }
+            //player1: { top: 20, mid: 30, bot: 20, base: 40 },
+            //player2: { top: 20, mid: 30, bot: 20, base: 40 }
           };
           this.ticks = 0;
           this.started = true;
           this.ended = false;
           this.paused = false;
+          this.draws = 0;
+          this.player1Score = 0;
+          this.player2Score = 0;
           this.spriteClasses = {
             // classes for squares where player 1 (white) is going right ie R1-R4
             // does not include player 1's pl class
@@ -403,23 +451,110 @@
           var player = "player" + (this.ticks % 2 + 1);
           var lanes = ["top", "mid", "bot"];
           //debug
-          var nextVal = { rock: "paper", paper: "scissors", scissors: "rock" }
+          //var nextVal = { rock: "paper", paper: "scissors", scissors: "rock" }
           for (var i = 0; i < 3; i++) {
             var l = lanes[i];
             this.lanes[player][l].push({ 
               value: this.barracks[player][l],
               loc: (player === "player1" ? 1 : (l == "mid" ? 7 : 15))
             });
-            this.barracks[player][l] = nextVal[this.barracks[player][l]];
+            this.barracks[player][l] = ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
+            // this.barracks[player][l] = nextVal[this.barracks[player][l]];
           }
         },
         resolveCreepBattles: function() {
+          this.results = {};
+          var lanes = ["top", "mid", "bot"];
+          var lanesAbbr = {top: "l", mid: "m", bot: "r"};
+          for (var i = 0; i < 3; i++) {
+            var l = lanes[i];
+            if (this.lanes["player1"][l].length > 0 && this.lanes["player2"][l].length > 0) {
+              var creep1 = this.lanes["player1"][l][0];
+              var creep2 = this.lanes["player2"][l][0];
+              if (creep1.loc == creep2.loc) {
+                if (creep1.value == creep2.value) {
+                  // draw
+                  this.lanes["player1"][l].shift();
+                  this.lanes["player2"][l].shift();
+                  this.draws++;
+                  // record result for square highlight
+                  this.results[lanesAbbr[l] + creep1.loc] = "r-draw"
+                } else if ((creep1.value == "rock" && creep2.value == "paper") ||
+                  (creep1.value == "paper" && creep2.value == "scissors") ||
+                  (creep1.value == "scissors" && creep2.value == "rock")) {
+                  // player 2 wins
+                  this.lanes["player1"][l].shift();
+                  this.player2Score++;
+                  // record result for square highlight
+                  this.results[lanesAbbr[l] + creep1.loc] = "r-lose"
+                } else {
+                  // player 1 wins
+                  this.lanes["player2"][l].shift();
+                  this.player1Score++;
+                  // record result for square highlight
+                  this.results[lanesAbbr[l] + creep1.loc] = "r-win"
+                }
+              }
+            }
+            // resolve shields / base hits
+            if (this.lanes["player1"][l].length > 0) {
+              var creep1 = this.lanes["player1"][l][0];
+              // shield hit
+              if (creep1.loc == (l == "mid" ? 6 : 10)) {
+                if (this.health["player2"][l] > 0) {
+                  this.lanes["player1"][l].shift();
+                  this.health["player2"][l]--;
+                  if (this.health["player2"][l] == 0) {
+                    var iid = "#l10-b";
+                    if (l == "mid") {
+                      iid = "#m6-b";
+                    } else if (l == "bot") {
+                      iid = "#r10-b";
+                    }
+                    $(iid).removeClass("fa-shield").addClass("fa-sun-o");
+                  }
+                }
+              }
+              // base hit
+              if (creep1.loc == (l == "mid" ? 7 : 15)) {
+                this.lanes["player1"][l].shift();
+                this.health["player2"]["base"]--;
+                this.results[lanesAbbr[l] + creep1.loc] = "r-win"
+              }
+            }
+            if (this.lanes["player2"][l].length > 0) {
+              var creep2 = this.lanes["player2"][l][0];
+              // shield hit
+              if (creep2.loc == (l == "mid" ? 2 : 6)) {
+                if (this.health["player1"][l] > 0) {
+                  this.lanes["player2"][l].shift();
+                  this.health["player1"][l]--;
+                  if (this.health["player1"][l] == 0) {
+                    var iid = "#l6-b";
+                    if (l == "mid") {
+                      iid = "#m2-b";
+                    } else if (l == "bot") {
+                      iid = "#r6-b";
+                    }
+                    $(iid).removeClass("fa-shield").addClass("fa-sun-o");
+                  }
+                }
+              }
+              // base hit
+              if (creep2.loc == 1) {
+                this.lanes["player2"][l].shift();
+                this.health["player1"]["base"]--;
+                this.results[lanesAbbr[l] + creep2.loc] = "r-lose"
+              }
+            }
+          }
         },
         update: function() {
           if (this.paused === true || this.ended === true || this.started === false) return;
           this.moveCreeps();
           this.spawnCreeps();
           this.resolveCreepBattles();
+          this.ticks++;
         },
         clearSprites: function() {
           // var start = new Date();
@@ -427,6 +562,9 @@
             $("#l" + i + "-f").hide();
             $("#m" + i + "-f").hide();
             $("#r" + i + "-f").hide();
+            $("#l" + i).removeClass();
+            $("#m" + i).removeClass();
+            $("#r" + i).removeClass();
           }
           // var end = new Date();
           // console.log("Operation took " + (end.getTime() - start.getTime()) + " msec");
@@ -448,6 +586,9 @@
               $(iid).removeClass(this.spriteClasses[direction]["clear"]);
               $(iid).addClass(this.spriteClasses[direction][creep.value]["player1"] + " pl");
               $(iid).show();
+            }
+            for (var loc in this.results) {
+              $("#" + loc).addClass(this.results[loc]);
             }
           }
           var topLane2 = this.lanes["player2"]["top"];
@@ -534,6 +675,43 @@
           }
         },
         updateScoreDisplay: function() {
+          $("#turn").html("" + Math.floor((this.ticks + 1) / 2) + "<br>(" + (this.ticks % 2 == 0 ? "Player" : "Enemy") + " turn)");
+          $("#game-score").text((this.player1Score * 3) + (this.draws));
+          $("#p1base").text(this.health["player1"]["base"]);
+          $("#p2base").text(this.health["player2"]["base"]);
+          $("#p1shields").text(this.health["player1"]["top"] + " " + this.health["player1"]["mid"] + " " + this.health["player1"]["bot"]);
+          $("#p2shields").text(this.health["player2"]["top"] + " " + this.health["player2"]["mid"] + " " + this.health["player2"]["bot"]);
+
+          if (this.health["player1"]["base"] < 10) {
+            $("#player-base").html("Your base is taking<br>damage!");
+          }
+          if (this.health["player2"]["base"] < 10) {
+            $("#enemy-base").html("You are dealing damage<br>to the enemy base!");
+          }
+          var playerShields = 3;
+          if (this.health["player1"]["top"] == 0) { playerShields-- }
+          if (this.health["player1"]["mid"] == 0) { playerShields-- }
+          if (this.health["player1"]["bot"] == 0) { playerShields-- }
+          if (playerShields == 2) {
+            $("#player-shields").html("You've lost a shield!<br>2 remain.");
+          } else if (playerShields == 1) {
+            $("#player-shields").html("You've lost another<br>shield! One remains.");
+          } else if (playerShields == 0) {
+            $("#player-shields").html("You have no more shields!");
+          }
+          var enemyShields = 3;
+          if (this.health["player2"]["top"] == 0) { enemyShields-- }
+          if (this.health["player2"]["mid"] == 0) { enemyShields-- }
+          if (this.health["player2"]["bot"] == 0) { enemyShields-- }
+          if (enemyShields == 2) {
+            $("#enemy-shields").html("You've destroyed a<br>shield! 2 remain.");
+          } else if (enemyShields == 1) {
+            $("#enemy-shields").html("You've destroyed another<br>shield! One remains.");
+          } else if (enemyShields == 0) {
+            $("#enemy-shields").html("You have destroyed all shields!");
+          }
+            
+
         },
         draw: function() {
           if (this.paused === true || this.ended === true || this.started === false) return;
