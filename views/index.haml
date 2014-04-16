@@ -272,31 +272,266 @@
           this.started = true;
           this.ended = false;
           this.paused = false;
-        },
-        spawnCreeps: function() {
-          
+          this.spriteClasses = {
+            // classes for squares where player 1 (white) is going right ie R1-R4
+            // does not include player 1's pl class
+            right: {
+              rock: {
+                player1: "fa-thumbs-up",
+                player2: "fa-thumbs-up fa-flip-horizontal"
+              },
+              paper: {
+                player1: "fa-file",
+                player2: "fa-file"
+              },
+              scissors: {
+                player1: "fa-cut",
+                player2: "fa-cut fa-flip-horizontal"
+              },
+              clear: "fa-thumbs-up fa-flip-horizontal fa-file fa-cut pl"
+            },
+            // classes for squares where player 1 is going left ie L1-L4 
+            left: {
+              rock: {
+                player1: "fa-thumbs-up fa-flip-horizontal",
+                player2: "fa-thumbs-up"
+              },
+              paper: {
+                player1: "fa-file",
+                player2: "fa-file"
+              },
+              scissors: {
+                player1: "fa-cut fa-flip-horizontal",
+                player2: "fa-cut"
+              },
+              clear: "fa-thumbs-up fa-flip-horizontal fa-file fa-cut pl"
+            },
+            // classes for squares where player 1 is going right at the top ie L12-L15 
+            rightTop: {
+              rock: {
+                player1: "fa-thumbs-down",
+                player2: "fa-thumbs-down fa-flip-horizontal"
+              },
+              paper: {
+                player1: "fa-file",
+                player2: "fa-file"
+              },
+              scissors: {
+                player1: "fa-cut",
+                player2: "fa-cut fa-flip-horizontal"
+              },
+              clear: "fa-thumbs-down fa-flip-horizontal fa-file fa-cut pl"
+            },
+            // classes for squares where player 1 is going left at the top ie R12-R15 
+            leftTop: {
+              rock: {
+                player1: "fa-thumbs-down fa-flip-horizontal",
+                player2: "fa-thumbs-down"
+              },
+              paper: {
+                player1: "fa-file",
+                player2: "fa-file"
+              },
+              scissors: {
+                player1: "fa-cut fa-flip-horizontal",
+                player2: "fa-cut"
+              },
+              clear: "fa-thumbs-down fa-flip-horizontal fa-file fa-cut pl"
+            },
+            // classes for left lane ie L5-L11
+            leftLane: {
+              rock: {
+                player1: "fa-thumbs-down fa-rotate-270",
+                player2: "fa-thumbs-up fa-rotate-90"
+              },
+              paper: {
+                player1: "fa-file",
+                player2: "fa-file"
+              },
+              scissors: {
+                player1: "fa-cut fa-rotate-270",
+                player2: "fa-cut fa-rotate-90"
+              },
+              clear: "fa-thumbs-up fa-thumbs-down fa-rotate-270 fa-rotate-90 fa-file fa-cut pl"
+            },
+            // classes for left lane ie L5-L11
+            midLane: {
+              rock: {
+                player1: "fa-thumbs-up fa-rotate-270",
+                player2: "fa-thumbs-up fa-rotate-90"
+              },
+              paper: {
+                player1: "fa-file",
+                player2: "fa-file"
+              },
+              scissors: {
+                player1: "fa-cut fa-rotate-270",
+                player2: "fa-cut fa-rotate-90"
+              },
+              clear: "fa-thumbs-up fa-rotate-270 fa-rotate-90 fa-file fa-cut pl"
+            },
+            // classes for left lane ie L5-L11
+            rightLane: {
+              rock: {
+                player1: "fa-thumbs-up fa-rotate-270",
+                player2: "fa-thumbs-down fa-rotate-90"
+              },
+              paper: {
+                player1: "fa-file",
+                player2: "fa-file"
+              },
+              scissors: {
+                player1: "fa-cut fa-rotate-270",
+                player2: "fa-cut fa-rotate-90"
+              },
+              clear: "fa-thumbs-up fa-thumbs-down fa-rotate-270 fa-rotate-90 fa-file fa-cut pl"
+            }
+          }
         },
         moveCreeps: function() {
+          var player = "player" + (this.ticks % 2 + 1);
+          var lanes = ["top", "mid", "bot"];
+          for (var i = 0; i < 3; i++) {
+            var l = lanes[i];
+            for (var j = 0; j < this.lanes[player][l].length; j++) {
+              var creep = this.lanes[player][l][j];
+              creep.loc += (player === "player1" ? 1 : -1);
+            }
+          }
+        },
+        spawnCreeps: function() {
+          var player = "player" + (this.ticks % 2 + 1);
+          var lanes = ["top", "mid", "bot"];
+          //debug
+          var nextVal = { rock: "paper", paper: "scissors", scissors: "rock" }
+          for (var i = 0; i < 3; i++) {
+            var l = lanes[i];
+            this.lanes[player][l].push({ 
+              value: this.barracks[player][l],
+              loc: (player === "player1" ? 1 : (l == "mid" ? 7 : 15))
+            });
+            this.barracks[player][l] = nextVal[this.barracks[player][l]];
+          }
         },
         resolveCreepBattles: function() {
         },
         update: function() {
           if (this.paused === true || this.ended === true || this.started === false) return;
-          this.spawnCreeps();
           this.moveCreeps();
+          this.spawnCreeps();
           this.resolveCreepBattles();
         },
         clearSprites: function() {
-          var start = new Date();
+          // var start = new Date();
           for (var i = 1; i <= 15; i++) {
             $("#l" + i + "-f").hide();
             $("#m" + i + "-f").hide();
             $("#r" + i + "-f").hide();
           }
-          var end = new Date();
-          console.log("Operation took " + (end.getTime() - start.getTime()) + " msec");
+          // var end = new Date();
+          // console.log("Operation took " + (end.getTime() - start.getTime()) + " msec");
         },
         drawSprites: function() {
+          var topLane1 = this.lanes["player1"]["top"];
+          for (var i = 0; i < topLane1.length; i++) {
+            var creep = topLane1[i];
+            var iid = "#l" + creep.loc + "-f";
+            var direction = "";
+            if (creep.loc < 5) {
+              direction = "left";
+            }  else if (creep.loc < 12) {
+              direction = "leftLane";
+            } else if (creep.loc < 15) {
+              direction = "rightTop";
+            }
+            if (direction != "") {
+              $(iid).removeClass(this.spriteClasses[direction]["clear"]);
+              $(iid).addClass(this.spriteClasses[direction][creep.value]["player1"] + " pl");
+              $(iid).show();
+            }
+          }
+          var topLane2 = this.lanes["player2"]["top"];
+          for (var i = 0; i < topLane2.length; i++) {
+            var creep = topLane2[i];
+            var iid = "#l" + creep.loc + "-f";
+            var direction = "";
+            if (creep.loc > 11) {
+              direction = "rightTop";
+            }  else if (creep.loc > 4) {
+              direction = "leftLane";
+            } else if (creep.loc > 1) {
+              direction = "left";
+            }
+            if (direction != "") {
+              $(iid).removeClass(this.spriteClasses[direction]["clear"]);
+              $(iid).addClass(this.spriteClasses[direction][creep.value]["player2"]);
+              $(iid).show();
+            }
+          }
+          var midLane1 = this.lanes["player1"]["mid"];
+          for (var i = 0; i < midLane1.length; i++) {
+            var creep = midLane1[i];
+            var iid = "#m" + creep.loc + "-f";
+            var direction = "";
+            if (creep.loc < 7) {
+              direction = "midLane";
+            }
+            if (direction != "") {
+              $(iid).removeClass(this.spriteClasses[direction]["clear"]);
+              $(iid).addClass(this.spriteClasses[direction][creep.value]["player1"] + " pl");
+              $(iid).show();
+            }
+          }
+          var midLane2 = this.lanes["player2"]["mid"];
+          for (var i = 0; i < midLane2.length; i++) {
+            var creep = midLane2[i];
+            var iid = "#m" + creep.loc + "-f";
+            var direction = "";
+            if (creep.loc > 1) {
+              direction = "midLane";
+            }
+            if (direction != "") {
+              $(iid).removeClass(this.spriteClasses[direction]["clear"]);
+              $(iid).addClass(this.spriteClasses[direction][creep.value]["player2"]);
+              $(iid).show();
+            }
+          }
+          var botLane1 = this.lanes["player1"]["bot"];
+          for (var i = 0; i < botLane1.length; i++) {
+            var creep = botLane1[i];
+            var iid = "#r" + creep.loc + "-f";
+            var direction = "";
+            if (creep.loc < 5) {
+              direction = "right";
+            }  else if (creep.loc < 12) {
+              direction = "rightLane";
+            } else if (creep.loc < 15) {
+              direction = "leftTop";
+            }
+            if (direction != "") {
+              $(iid).removeClass(this.spriteClasses[direction]["clear"]);
+              $(iid).addClass(this.spriteClasses[direction][creep.value]["player1"] + " pl");
+              $(iid).show();
+            }
+          }
+          var botLane2 = this.lanes["player2"]["bot"];
+          for (var i = 0; i < botLane2.length; i++) {
+            var creep = botLane2[i];
+            var iid = "#r" + creep.loc + "-f";
+            var direction = "";
+            if (creep.loc > 11) {
+              direction = "leftTop";
+            }  else if (creep.loc > 4) {
+              direction = "rightLane";
+            } else if (creep.loc > 1) {
+              direction = "right";
+            }
+            if (direction != "") {
+              $(iid).removeClass(this.spriteClasses[direction]["clear"]);
+              $(iid).addClass(this.spriteClasses[direction][creep.value]["player2"]);
+              $(iid).show();
+            }
+          }
         },
         updateScoreDisplay: function() {
         },
@@ -307,4 +542,10 @@
           this.updateScoreDisplay();
         }
       }
+      Game.initialize();
+      
+      setInterval(function() {
+        Game.update();
+        Game.draw();
+      }, 1000);
 
