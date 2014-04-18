@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta content='IE=Edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width, initial-scale=1.0' name='viewport'>
+    <link href='//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css' rel='stylesheet'>
+    <title>WDFAC</title>
+    <meta content='Reverse Lane Defense with Rock-Paper-Scissors creeps' name='description'>
+    <meta content='WDFAC' property='og:title'>
+    <meta content='Reverse Lane Defense with Rock-Paper-Scissors creeps' property='og:description'>
+    <meta content='website' property='og:type'>
+    <meta content='https://datenshizero.github.io/wdfac' property='og:url'>
+    <meta content='https://datenshizero.github.io/wdfac/assets/opengraph-b4c338e3675879c7c85ee66a0ee861b8.png' property='og:image'>
+    <link href='/favicon.ico' rel='shortcut icon'>
+    <link href='https://datenshizero.github.io/wdfac/assets/app-152fe4ab1679a327af63add7c4cfd60c.css' rel='stylesheet'>
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <div class='navbar navbar-default navbar-static-top'>
+      <div class='container'>
+        <div class='navbar-header'>
+          <a class='navbar-brand' href='#'>Wave Defense of Font Awesome Creeps - RPS</a>
+        </div>
+      </div>
+    </div>
+    <div class='container main-container'>
+      <div class='row' id='game-board'>
+        <div class='col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2'>
+          <table class='table table-bordered'>
+            <tr>
+              <td id='l12'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l12-b'></i>
+                  <i class='fa fa-stack-1x' id='l12-f'></i>
+                </span>
+              </td>
+              <td id='l13'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l13-b'></i>
+                  <i class='fa fa-stack-1x' id='l13-f'></i>
+                </span>
+              </td>
+              <td id='l14'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l14-b'></i>
+                  <i class='fa fa-stack-1x' id='l14-f'></i>
+                </span>
+              </td>
+              <td id='l15'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-ban fa-stack-2x' id='l15-b'></i>
+                  <i class='fa fa-stack-1x' id='l15-f'></i>
+                </span>
+              </td>
+              <td id='b2'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-building-o fa-2x fa-stack-2x' id='b2-b'></i>
+                </span>
+              </td>
+              <td id='r15'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-ban fa-stack-2x' id='r15-b'></i>
+                  <i class='fa fa-stack-1x' id='r15-f'></i>
+                </span>
+              </td>
+              <td id='r14'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r14-b'></i>
+                  <i class='fa fa-stack-1x' id='r14-f'></i>
+                </span>
+              </td>
+              <td id='r13'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r13-b'></i>
+                  <i class='fa fa-stack-1x' id='r13-f'></i>
+                </span>
+              </td>
+              <td id='r12'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r12-b'></i>
+                  <i class='fa fa-stack-1x' id='r12-f'></i>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td id='l11'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l11-b'></i>
+                  <i class='fa fa-stack-1x' id='l11-f'></i>
+                </span>
+              </td>
+              <td class='score-space' colspan='3' rowspan='2'>
+                <h3>
+                  Turn:
+                  <span id='turn'>0</span>
+                </h3>
+                <h3>
+                  Score:
+                  <span id='game-score'>0</span>
+                </h3>
+              </td>
+              <td id='m7'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-ban fa-stack-2x' id='m7-b'></i>
+                  <i class='fa fa-stack-1x' id='m7-f'></i>
+                </span>
+              </td>
+              <td class='enemy-health' colspan='3' rowspan='2'>
+                <h3>
+                  <span id='p2base-health'>0</span>
+                  <i class='fa fa-building-o fa-lg'></i>
+                </h3>
+                <h3>
+                  <span id='p2shield1-health'>0</span>
+                  <i class='fa fa-shield'></i>
+                  <span id='p2shield2-health'>0</span>
+                  <i class='fa fa-shield'></i>
+                  <span id='p2shield3-health'>0</span>
+                  <i class='fa fa-shield'></i>
+                </h3>
+              </td>
+              <td id='r11'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r11-b'></i>
+                  <i class='fa fa-stack-1x' id='r11-f'></i>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td id='l10'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-shield fa-stack-2x' id='l10-b'></i>
+                  <i class='fa fa-stack-1x' id='l10-f'></i>
+                </span>
+              </td>
+              <td id='m6'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-shield fa-stack-2x' id='m6-b'></i>
+                  <i class='fa fa-stack-1x' id='m6-f'></i>
+                </span>
+              </td>
+              <td id='r10'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-shield fa-stack-2x' id='r10-b'></i>
+                  <i class='fa fa-stack-1x' id='r10-f'></i>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td id='l9'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l9-b'></i>
+                  <i class='fa fa-stack-1x' id='l9-f'></i>
+                </span>
+              </td>
+              <td class='score-space' colspan='3' rowspan='3'>
+                <p id='player-base'></p>
+                <p id='player-shields'>
+                  <p class='end-result' id='player-result'></p>
+                </p>
+              </td>
+              <td id='m5'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='m5-b'></i>
+                  <i class='fa fa-stack-1x' id='m5-f'></i>
+                </span>
+              </td>
+              <td class='score-space' colspan='3' rowspan='3'>
+                <p id='enemy-base'></p>
+                <p id='enemy-shields'></p>
+                <p class='end-result' id='enemy-result'></p>
+              </td>
+              <td id='r9'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r9-b'></i>
+                  <i class='fa fa-stack-1x' id='r9-f'></i>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td id='l8'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l8-b'></i>
+                  <i class='fa fa-stack-1x' id='l8-f'></i>
+                </span>
+              </td>
+              <td id='m4'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='m4-b'></i>
+                  <i class='fa fa-stack-1x' id='m4-f'></i>
+                </span>
+              </td>
+              <td id='r8'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r8-b'></i>
+                  <i class='fa fa-stack-1x' id='r8-f'></i>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td id='l7'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l7-b'></i>
+                  <i class='fa fa-stack-1x' id='l7-f'></i>
+                </span>
+              </td>
+              <td id='m3'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='m3-b'></i>
+                  <i class='fa fa-stack-1x' id='m3-f'></i>
+                </span>
+              </td>
+              <td id='r7'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r7-b'></i>
+                  <i class='fa fa-stack-1x' id='r7-f'></i>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td id='l6'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-shield fa-stack-2x' id='l6-b'></i>
+                  <i class='fa fa-stack-1x' id='l6-f'></i>
+                </span>
+              </td>
+              <td class='player-health' colspan='3' rowspan='2'>
+                <h3>
+                  <span id='p1shield1-health'>0</span>
+                  <i class='fa fa-shield'></i>
+                  <span id='p1shield2-health'>0</span>
+                  <i class='fa fa-shield'></i>
+                  <span id='p1shield3-health'>0</span>
+                  <i class='fa fa-shield'></i>
+                </h3>
+                <h3>
+                  <span id='p1base-health'>0</span>
+                  <i class='fa fa-building-o fa-lg'></i>
+                </h3>
+              </td>
+              <td id='m2'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-shield fa-stack-2x' id='m2-b'></i>
+                  <i class='fa fa-stack-1x' id='m2-f'></i>
+                </span>
+              </td>
+              <td class='score-space best-scores' colspan='3' rowspan='2'>
+                <h4>
+                  Fastest Win:
+                  <span id='top-speed'>0</span>
+                  Turns
+                </h4>
+                <h4>
+                  Best Score:
+                  <span id='high-score'>0</span>
+                </h4>
+                <p id='game-mode'>
+                  (Medium/Medium/Medium)
+                </p>
+              </td>
+              <td id='r6'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-shield fa-stack-2x' id='r6-b'></i>
+                  <i class='fa fa-stack-1x' id='r6-f'></i>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td id='l5'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l5-b'></i>
+                  <i class='fa fa-stack-1x' id='l5-f'></i>
+                </span>
+              </td>
+              <td id='m1'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-ban fa-stack-2x' id='m1-b'></i>
+                  <i class='fa fa-stack-1x' id='m1-f'></i>
+                </span>
+              </td>
+              <td id='r5'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r5-b'></i>
+                  <i class='fa fa-stack-1x' id='r5-f'></i>
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td id='l4'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l4-b'></i>
+                  <i class='fa fa-stack-1x' id='l4-f'></i>
+                </span>
+              </td>
+              <td id='l3'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l3-b'></i>
+                  <i class='fa fa-stack-1x' id='l3-f'></i>
+                </span>
+              </td>
+              <td id='l2'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='l2-b'></i>
+                  <i class='fa fa-stack-1x' id='l2-f'></i>
+                </span>
+              </td>
+              <td id='l1'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-ban fa-stack-2x' id='l1-b'></i>
+                  <i class='fa fa-stack-1x' id='l1-f'></i>
+                </span>
+              </td>
+              <td id='b1'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-building-o fa-stack-2x pl' id='b1-b'></i>
+                </span>
+              </td>
+              <td id='r1'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-ban fa-stack-2x' id='r1-b'></i>
+                  <i class='fa fa-stack-1x' id='r1-f'></i>
+                </span>
+              </td>
+              <td id='r2'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r2-b'></i>
+                  <i class='fa fa-stack-1x' id='r2-f'></i>
+                </span>
+              </td>
+              <td id='r3'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r3-b'></i>
+                  <i class='fa fa-stack-1x' id='r3-f'></i>
+                </span>
+              </td>
+              <td id='r4'>
+                <span class='fa-stack fa-lg'>
+                  <i class='fa fa-sun-o fa-stack-2x' id='r4-b'></i>
+                  <i class='fa fa-stack-1x' id='r4-f'></i>
+                </span>
+              </td>
+            </tr>
+          </table>
+          <div class='controls'>
+            <button class='btn btn-default btn-lg' id='options'>
+              <i class='fa fa-gears fa-lg'></i>
+            </button>
+            &nbsp;
+            &nbsp;
+            <div class='btn-group btn-group-lg' data-toggle='buttons'>
+              <label class='btn btn-default'>
+                <input id='mid-rock' name='move-mid' type='radio' value='rock'>
+                  <i class='fa fa-thumbs-up fa-rotate-270 fa-lg'></i>
+                </input>
+              </label>
+              <label class='btn btn-default active'>
+                <input id='mid-paper' name='move-mid' type='radio' value='paper'>
+                  <i class='fa fa-file fa-lg'></i>
+                </input>
+              </label>
+              <label class='btn btn-default'>
+                <input id='mid-scissors' name='move-mid' type='radio' value='scissors'>
+                  <i class='fa fa-scissors fa-rotate-270 fa-lg'></i>
+                </input>
+              </label>
+            </div>
+            &nbsp;
+            &nbsp;
+            <button class='btn btn-default btn-lg' id='pause'>
+              <i class='fa fa-pause fa-lg'></i>
+            </button>
+          </div>
+          <div class='controls'>
+            <div class='btn-group btn-group-lg' data-toggle='buttons'>
+              <label class='btn btn-default'>
+                <input id='top-rock' name='move-top' type='radio' value='rock'>
+                  <i class='fa fa-thumbs-up fa-flip-horizontal fa-lg'></i>
+                </input>
+              </label>
+              <label class='btn btn-default active'>
+                <input id='top-paper' name='move-top' type='radio' value='paper'>
+                  <i class='fa fa-file fa-lg'></i>
+                </input>
+              </label>
+              <label class='btn btn-default'>
+                <input id='top-scissors' name='move-top' type='radio' value='scissors'>
+                  <i class='fa fa-scissors fa-flip-horizontal fa-lg'></i>
+                </input>
+              </label>
+            </div>
+            &nbsp;
+            &nbsp;
+            <div class='btn-group btn-group-lg' data-toggle='buttons'>
+              <label class='btn btn-default'>
+                <input id='bot-rock' name='move-bot' type='radio' value='rock'>
+                  <i class='fa fa-thumbs-up fa-lg'></i>
+                </input>
+              </label>
+              <label class='btn btn-default active'>
+                <input id='bot-paper' name='move-bot' type='radio' value='paper'>
+                  <i class='fa fa-file fa-lg'></i>
+                </input>
+              </label>
+              <label class='btn btn-default'>
+                <input id='bot-scissors' name='move-bot' type='radio' value='scissors'>
+                  <i class='fa fa-scissors fa-lg'></i>
+                </input>
+              </label>
+            </div>
+          </div>
+          <hr>
+          <div class='rules'>
+            <h3>Rules</h3>
+            <p>
+              Select the correct creeps to spawn on your turn and overwhelm your opponent.
+            </p>
+            <p>
+              Paper defeats Rock. Scissors defeat Paper. Rock defeats Scissors.
+            </p>
+            <p>
+              Click the play button to start the game.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class='row' id='game-options'>
+        <div class='col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2'>
+          <h2>New Game Options</h2>
+          <h3>Difficulty</h3>
+          <div class='btn-group btn-group-lg' data-toggle='buttons'>
+            <label class='btn btn-default'>
+              <input id='dif-easy' name='difficulty' type='radio'>Easy</input>
+            </label>
+            <label class='btn btn-default active'>
+              <input id='dif-medium' name='difficulty' type='radio'>Medium</input>
+            </label>
+            <label class='btn btn-default'>
+              <input id='dif-hard' name='difficulty' type='radio'>Hard</input>
+            </label>
+          </div>
+          <p>
+            the enemy changes their creeps more often at harder difficulty
+          </p>
+          <h3>Speed</h3>
+          <div class='btn-group btn-group-lg' data-toggle='buttons'>
+            <label class='btn btn-default'>
+              <input id='spd-slow' name='speed' type='radio'>Slow</input>
+            </label>
+            <label class='btn btn-default active'>
+              <input id='spd-medium' name='speed' type='radio'>Medium</input>
+            </label>
+            <label class='btn btn-default'>
+              <input id='spd-fast' name='speed' type='radio'>Fast</input>
+            </label>
+          </div>
+          <p>
+            how fast the creeps move and are spawned
+          </p>
+          <h3>Durability</h3>
+          <div class='btn-group btn-group-lg' data-toggle='buttons'>
+            <label class='btn btn-default'>
+              <input id='dur-high' name='durability' type='radio'>High</input>
+            </label>
+            <label class='btn btn-default active'>
+              <input id='dur-medium' name='durability' type='radio'>Medium</input>
+            </label>
+            <label class='btn btn-default'>
+              <input id='dur-low' name='durability' type='radio'>Low</input>
+            </label>
+          </div>
+          <p>
+            the amount of hits required to destroy shields and bases
+          </p>
+          <p>
+            <a href='#' id='show-advanced'>Click to show advanced settings</a>
+          </p>
+          <div id='advanced'>
+            <h3>Wallpaper Mode</h3>
+            <form class='form-inline'>
+              <div class='checkbox'>
+                <label>
+                  <input id='wallpaper' type='checkbox'>
+                    Make the computer play against itself
+                  </input>
+                </label>
+              </div>
+            </form>
+            <h3>Keyboard Shortcuts</h3>
+            <select class='form-control' id='keyboard'>
+              <option value='default'>Default (Left: sdf, Mid: tyu, Right: jkl, Pause: space, Options: esc)</option>
+              <option value='oneline'>Single Line (Left: asd, Mid: fgh, Right: jkl, Pause: space, Options: esc)</option>
+              <option value='numpad'>Numpad (Left: 741, Mid: 852, Right: 963, Pause: enter, Options: 0)</option>
+              <option value='lefthand'>Left Hand (Left: qaz, Mid: wsx, Right: edc, Pause: space, Options: esc)</option>
+            </select>
+          </div>
+          <p id='start-group'>
+            <button class='btn btn-default btn-lg' id='cancel-new-game' type='button'>Cancel</button>
+            <button class='btn btn-default btn-primary btn-lg' id='start-game' type='button'>Start Game</button>
+          </p>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-lg-12'>
+          <div class='footer'>
+            <p class='copyright'>
+              Copyright &copy;2014
+              <a href='http://bryanbibat.net'>Bryan Bibat</a>
+            </p>
+            <p class='powered'>
+              Made with <a href="http://getbootstrap.com/">Bootstrap</a>,
+              <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> and a bunch of JS libraries.
+            </p>
+            <p><a href="https://github.com/datenshiZERO/wdfac">Fork this on Github</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js' type='text/javascript'>\</script>
+    <script src='https://datenshizero.github.io/wdfac/assets/app-b13b8212e43ac7c2058d42515618eade.js' type='text/javascript'>\</script>
+  </head>
+</html>
