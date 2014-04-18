@@ -85,6 +85,9 @@
         font-weight: bold;
         font-size: 170%;
       }
+      #game-board, #cancel-new-game {
+        display: none;
+      }
         
 
     // %meta{:content => image_path("opengraph.png"), :property => "og:image"}/
@@ -311,7 +314,7 @@
                   %i#r4-f.fa.fa-stack-1x
          
           %p.controls
-            %button.btn.btn-default.btn-lg
+            %button.btn.btn-default.btn-lg#options
               %i.fa.fa-gears.fa-lg
             &nbsp;
             &nbsp;
@@ -367,7 +370,8 @@
             the amount of hits required to destroy shields and bases
 
           %p
-            %button.btn.btn-default.btn-primary.btn-lg{ type: "button" } Start Game
+            %button.btn.btn-default.btn-lg#cancel-new-game{ type: "button" } Cancel
+            %button.btn.btn-default.btn-primary.btn-lg#start-game{ type: "button" } Start Game
 
 
 

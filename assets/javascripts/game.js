@@ -23,6 +23,7 @@ var Game = {
     this.player1Score = 0;
     this.player2Score = 0;
     this.clearAllSprites();
+    this.updateScoreDisplay();
   },
   laneList: ["top", "mid", "bot"],
   lanesAbbr: {top: "l", mid: "m", bot: "r"},
@@ -267,6 +268,18 @@ var Game = {
       $("#m" + i + "-f").hide();
       $("#r" + i + "-f").hide();
     }
+    $("#l10-b").removeClass("fa-sun-o").addClass("fa-shield");
+    $("#m6-b").removeClass("fa-sun-o").addClass("fa-shield");
+    $("#r10-b").removeClass("fa-sun-o").addClass("fa-shield");
+    $("#l6-b").removeClass("fa-sun-o").addClass("fa-shield");
+    $("#m2-b").removeClass("fa-sun-o").addClass("fa-shield");
+    $("#r6-b").removeClass("fa-sun-o").addClass("fa-shield");
+    $("#player-base").text("");
+    $("#player-shields").text("");
+    $("#player-result").text("");
+    $("#enemy-base").text("");
+    $("#enemy-shields").text("");
+    $("#enemy-result").text("");
     this.clearSprites();
   },
   clearSprites: function() {
@@ -328,6 +341,7 @@ var Game = {
     return "outOfBounds";
   },
   drawSprites: function() {
+    if (this.ticks < 1) return;
     var player = "player" + ((this.ticks - 1) % 2 + 1);
     for (var i = 0; i < 3; i++) {
       var l = this.laneList[i];
@@ -426,26 +440,46 @@ var Game = {
     this.intervalId = setInterval(function() {
       _this.update();
       _this.draw();
-    }, 1000);
+    }, 700);
   }
 }
-Game.initialize();
-Game.run();
 
 function pause() {
   Game.paused = true;
-  console.log(Game.intervalId);
   clearInterval(Game.intervalId);
 
   $("#pause i").removeClass("fa-pause").addClass("fa-play");
+  $("#pause").addClass("btn-danger");
   $("#pause").off().click(resume);
 }
 
 function resume() {
   Game.paused = false;
   Game.run();
-  $("#pause i").removeClass("fa-play").addClass("fa-pause");
+  $("#pause i").removeClass("fa-play-danger").addClass("fa-pause");
+  $("#pause").removeClass("btn-danger");
   $("#pause").off().click(pause);
 }
 
 $("#pause").click(pause);
+
+$("#start-game").click(function() {
+  $("#game-options").slideUp();
+  $("#game-board").slideDown();
+  $("#pause i").removeClass("fa-play-danger").addClass("fa-pause");
+  $("#pause").removeClass("btn-danger");
+  Game.initialize();
+  Game.run();
+});
+
+$("#options").click(function() {
+  pause();
+  $("#cancel-new-game").show();
+  $("#game-board").slideUp();
+  $("#game-options").slideDown();
+});
+
+$("#cancel-new-game").click(function() {
+  $("#game-options").slideUp();
+  $("#game-board").slideDown();
+});
