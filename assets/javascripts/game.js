@@ -1,20 +1,15 @@
 var Game = {
   initialize: function() {
+    this.retrieveSettings();
     this.lanes = { 
       player1: { top: [], mid: [], bot: [] },
       player2: { top: [], mid: [], bot: [] }
     };
-    this.results = {};
     this.barracks = { 
       player1: { top: "paper", mid: "paper", bot: "paper" },
       player2: { top: "paper", mid: "paper", bot: "paper" }
     };
-    this.health = { 
-      player1: { top: 5, mid: 10, bot: 5, base: 10 },
-      player2: { top: 5, mid: 10, bot: 5, base: 10 }
-      //player1: { top: 20, mid: 30, bot: 20, base: 40 },
-      //player2: { top: 20, mid: 30, bot: 20, base: 40 }
-    };
+    this.results = {};
     this.ticks = 0;
     this.started = true;
     this.ended = false;
@@ -24,6 +19,70 @@ var Game = {
     this.player2Score = 0;
     this.clearAllSprites();
     this.updateScoreDisplay();
+  },
+  retrieveSettings: function() {
+    if ($("label.active input[name=difficulty]").attr("id") == "dif-easy") {
+      this.changeChance = 20;
+      this.difficulty = "Easy";
+    } else if ($("label.active input[name=difficulty]").attr("id") == "dif-medium") {
+      this.changeChance = 50;
+      this.difficulty = "Medium";
+    } else if ($("label.active input[name=difficulty]").attr("id") == "dif-hard") {
+      this.changeChance = 100;
+      this.difficulty = "Hard";
+    } else {
+      $("#dif-medium").parent().addClass("active");
+      this.changeChance = 40;
+      this.difficulty = "Medium";
+    }
+
+    if ($("label.active input[name=speed]").attr("id") == "spd-slow") {
+      this.interval = 4000;
+      this.animationDelay = 500;
+      this.speed = "Slow";
+    } else if ($("label.active input[name=speed]").attr("id") == "spd-medium") {
+      this.interval = 2000;
+      this.animationDelay = 300;
+      this.speed = "Medium";
+    } else if ($("label.active input[name=speed]").attr("id") == "spd-fast") {
+      this.interval = 700;
+      this.animationDelay = 200;
+      this.speed = "Fast";
+    } else {
+      $("#spd-medium").parent().addClass("active");
+      this.interval = 1500;
+      this.animationDelay = 300;
+      this.speed = "Medium";
+    }
+
+    if ($("label.active input[name=durability]").attr("id") == "dur-low") {
+      this.health = { 
+        player1: { top: 5, mid: 10, bot: 5, base: 10 },
+        player2: { top: 5, mid: 10, bot: 5, base: 10 }
+      }
+      this.durability = "Low";
+    } else if ($("label.active input[name=durability]").attr("id") == "dur-medium") {
+      this.health = { 
+        player1: { top: 10, mid: 20, bot: 10, base: 20 },
+        player2: { top: 10, mid: 20, bot: 10, base: 20 }
+      };
+      this.durability = "Medium";
+    } else if ($("label.active input[name=durability]").attr("id") == "dur-high") {
+      this.health = { 
+        player1: { top: 20, mid: 30, bot: 20, base: 40 },
+        player2: { top: 20, mid: 30, bot: 20, base: 40 }
+      };
+      this.durability = "High";
+    } else {
+      $("#dur-medium").parent().addClass("active");
+      this.health = { 
+        player1: { top: 10, mid: 20, bot: 10, base: 20 },
+        player2: { top: 10, mid: 20, bot: 10, base: 20 }
+      };
+      this.durability = "Medium";
+    }
+
+    $("#game-mode").text("(" + this.difficulty + "/" + this.speed + "/" + this.durability + ")");
   },
   laneList: ["top", "mid", "bot"],
   lanesAbbr: {top: "l", mid: "m", bot: "r"},
@@ -152,17 +211,30 @@ var Game = {
       }
     }
   },
+  chosenCreep: function(lane) {
+    var value = $("label.active input[name=move-" + lane + "]").val();
+    if (value == undefined) {
+      value = "paper";
+      $("#" + lane + "-paper").parent().addClass("active");
+    }
+    return value;
+  },
   spawnCreeps: function() {
     var player = "player" + (this.ticks % 2 + 1);
     //debug
     //var nextVal = { rock: "paper", paper: "scissors", scissors: "rock" }
     for (var i = 0; i < 3; i++) {
       var l = this.laneList[i];
+      if (player == "player1") {
+        this.barracks[player][l] = this.chosenCreep(l);
+      } else if (player == "player2" && Math.random() * 100 < this.changeChance) {
+        this.barracks[player][l] = ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
+      }
       this.lanes[player][l].push({ 
         value: this.barracks[player][l],
         loc: (player === "player1" ? 1 : (l == "mid" ? 7 : 15))
       });
-      this.barracks[player][l] = ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
+       
       // this.barracks[player][l] = nextVal[this.barracks[player][l]];
     }
   },
@@ -354,18 +426,18 @@ var Game = {
           var clearClass = this.spriteClasses[direction]["clear"];
           var addClass = this.spriteClasses[direction][creep.value][player] + (player == "player1" ? " pl" : "");
 
-          (function(iid, clearClass, addClass) {
+          (function(iid, clearClass, addClass, animationDelay) {
             var drawFunc = function() {
               $(iid).removeClass(clearClass)
                 .addClass(addClass)
-                .fadeIn(200);
+                .fadeIn(animationDelay);
             }
             if ($(iid).is(":visible")) {
-              $(iid).fadeOut(200, drawFunc);
+              $(iid).fadeOut(animationDelay, drawFunc);
             } else {
-              setTimeout(drawFunc, 200);
+              setTimeout(drawFunc, animationDelay);
             }
-          })(iid, clearClass, addClass);
+          })(iid, clearClass, addClass, this.animationDelay);
 
         } else {
           $("#" + this.lanesAbbr[l] + creep.loc + "-f").hide();
@@ -377,8 +449,8 @@ var Game = {
       for (var loc in _this.results) {
         $("#" + loc).addClass(_this.results[loc]);
       }
-      $(".r-draw .fa-stack-1x").delay(200).hide();
-    }, 400);
+      $(".r-draw .fa-stack-1x").delay(this.animationDelay).hide();
+    }, this.animationDelay * 2);
   },
   updateScoreDisplay: function() {
     $("#turn").html(this.ticks);
@@ -414,18 +486,23 @@ var Game = {
     } else if (enemyShields == 0) {
       $("#enemy-shields").html("You have destroyed<br>all shields!");
     }
+    var baseHealth = {
+      "Low" : 10,
+      "Medium" : 20,
+      "Hard" : 40
+    }
     if (this.health["player1"]["base"] < 1) {
       $("#player-result").html("You lost!");
       this.ended = true;
       clearInterval(this.intervalId);
-    } else if (this.health["player1"]["base"] < 10) {
+    } else if (this.health["player1"]["base"] < baseHealth[this.durability] ) {
       $("#player-base").html("Your base is taking<br>damage!");
     } 
     if (this.health["player2"]["base"] < 1) {
       $("#enemy-result").html("You win!");
       this.ended = true;
       clearInterval(this.intervalId);
-    } else if (this.health["player2"]["base"] < 10) {
+    } else if (this.health["player2"]["base"] < baseHealth[this.durability]) {
       $("#enemy-base").html("You're dealing damage<br>to the enemy base!");
     }
   },
@@ -440,14 +517,13 @@ var Game = {
     this.intervalId = setInterval(function() {
       _this.update();
       _this.draw();
-    }, 700);
+    }, this.interval);
   }
 }
 
 function pause() {
-  Game.paused = true;
   clearInterval(Game.intervalId);
-
+  Game.paused = true;
   $("#pause i").removeClass("fa-pause").addClass("fa-play");
   $("#pause").addClass("btn-danger");
   $("#pause").off().click(resume);
@@ -461,7 +537,7 @@ function resume() {
   $("#pause").off().click(pause);
 }
 
-$("#pause").click(pause);
+$("#pause").click( pause );
 
 $("#start-game").click(function() {
   $("#game-options").slideUp();
@@ -470,6 +546,7 @@ $("#start-game").click(function() {
   $("#pause").removeClass("btn-danger");
   Game.initialize();
   Game.run();
+  pause();
 });
 
 $("#options").click(function() {

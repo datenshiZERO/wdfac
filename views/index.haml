@@ -12,6 +12,7 @@
     %meta{:content => "A portfolio website of a software engineer", :property => "og:description"}/
     %meta{:content => "website", :property => "og:type"}/
     %meta{:content => "http://bryanbibat.net/", :property => "og:url"}/
+    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
     :css
       td { 
         background: #d18b47;
@@ -48,8 +49,9 @@
       .pl {
         color: white;
       }
-      p.controls {
+      div.controls {
         text-align: center;
+        margin-bottom: 10px;
       }
       #game-options, .footer {
         text-align: center;
@@ -87,6 +89,9 @@
       }
       #game-board, #cancel-new-game {
         display: none;
+      }
+      #start-group {
+        margin-top: 30px;
       }
         
 
@@ -257,7 +262,7 @@
                 %h4
                   Best Score:
                   %span.high-score 0
-                %p.game-mode
+                %p#game-mode
                   (Medium/Medium/Medium)
               %td#r6
                 %span.fa-stack.fa-lg
@@ -313,63 +318,85 @@
                   %i#r4-b.fa.fa-sun-o.fa-stack-2x
                   %i#r4-f.fa.fa-stack-1x
          
-          %p.controls
+          .controls
             %button.btn.btn-default.btn-lg#options
               %i.fa.fa-gears.fa-lg
             &nbsp;
             &nbsp;
-            %button.btn.btn-default.btn-lg.btn-primary
-              %i.fa.fa-thumbs-up.fa-rotate-270.fa-lg.pl
-            %button.btn.btn-default.btn-lg
-              %i.fa.fa-file.fa-lg
-            %button.btn.btn-default.btn-lg
-              %i.fa.fa-scissors.fa-rotate-270.fa-lg
+            .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
+              %label.btn.btn-default
+                %input{type: "radio", name: "move-mid", id: "mid-rock", value: "rock"}
+                  %i.fa.fa-thumbs-up.fa-rotate-270.fa-lg
+              %label.btn.btn-default.active
+                %input{type: "radio", name: "move-mid", id: "mid-paper", value: "paper"}
+                  %i.fa.fa-file.fa-lg
+              %label.btn.btn-default
+                %input{type: "radio", name: "move-mid", id: "mid-scissors", value: "scissors"}
+                  %i.fa.fa-scissors.fa-rotate-270.fa-lg
             &nbsp;
             &nbsp;
             %button#pause.btn.btn-default.btn-lg
               %i.fa.fa-pause.fa-lg
-          %p.controls
-            %button.btn.btn-default.btn-lg
-              %i.fa.fa-thumbs-up.fa-flip-horizontal.fa-lg
-            %button.btn.btn-default.btn-lg.btn-primary
-              %i.fa.fa-file.fa-lg.pl
-            %button.btn.btn-default.btn-lg
-              %i.fa.fa-scissors.fa-flip-horizontal.fa-lg
+
+          .controls
+            .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
+              %label.btn.btn-default
+                %input{type: "radio", name: "move-top", id: "top-rock", value: "rock"}
+                  %i.fa.fa-thumbs-up.fa-flip-horizontal.fa-lg
+              %label.btn.btn-default.active
+                %input{type: "radio", name: "move-top", id: "top-paper", value: "paper"}
+                  %i.fa.fa-file.fa-lg
+              %label.btn.btn-default
+                %input{type: "radio", name: "move-top", id: "top-scissors", value: "scissors"}
+                  %i.fa.fa-scissors.fa-flip-horizontal.fa-lg
             &nbsp;
             &nbsp;
-            %button.btn.btn-default.btn-lg
-              %i.fa.fa-thumbs-up.fa-lg
-            %button.btn.btn-default.btn-lg
-              %i.fa.fa-file.fa-lg
-            %button.btn.btn-default.btn-lg.btn-primary
-              %i.fa.fa-scissors.fa-lg.pl
+            .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
+              %label.btn.btn-default
+                %input{type: "radio", name: "move-bot", id: "bot-rock", value: "rock"}
+                  %i.fa.fa-thumbs-up.fa-lg
+              %label.btn.btn-default.active
+                %input{type: "radio", name: "move-bot", id: "bot-paper", value: "paper"}
+                  %i.fa.fa-file.fa-lg
+              %label.btn.btn-default
+                %input{type: "radio", name: "move-bot", id: "bot-scissors", value: "scissors"}
+                  %i.fa.fa-scissors.fa-lg
 
       .row#game-options
         .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2
           %h2 New Game Options
           %h3 Difficulty
-          .btn-group.btn-group-lg
-            %button.btn.btn-default{ type: "button" } Easy
-            %button.btn.btn-default{ type: "button" } Medium
-            %button.btn.btn-default{ type: "button" } Hard
+          .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
+            %label.btn.btn-default
+              %input{type: "radio", name: "difficulty", id: "dif-easy"} Easy
+            %label.btn.btn-default.active
+              %input{type: "radio", name: "difficulty", id: "dif-medium"} Medium
+            %label.btn.btn-default
+              %input{type: "radio", name: "difficulty", id: "dif-hard"} Hard
           %p
             the enemy changes their creeps more often at harder difficulty
           %h3 Speed
-          .btn-group.btn-group-lg
-            %button.btn.btn-default{ type: "button" } Slow
-            %button.btn.btn-default{ type: "button" } Medium
-            %button.btn.btn-default{ type: "button" } Fast
+          .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
+            %label.btn.btn-default
+              %input{type: "radio", name: "speed", id: "spd-slow"} Slow
+            %label.btn.btn-default.active
+              %input{type: "radio", name: "speed", id: "spd-medium"} Medium
+            %label.btn.btn-default
+              %input{type: "radio", name: "speed", id: "spd-fast"} Fast
           %p
             how fast the creeps move and are spawned
           %h3 Durability
-          .btn-group.btn-group-lg
-            %button.btn.btn-default{ type: "button" } Low
-            %button.btn.btn-default{ type: "button" } Medium
-            %button.btn.btn-default{ type: "button" } High
+          .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
+            %label.btn.btn-default
+              %input{type: "radio", name: "durability", id: "dur-high"} High
+            %label.btn.btn-default.active
+              %input{type: "radio", name: "durability", id: "dur-medium"} Medium
+            %label.btn.btn-default
+              %input{type: "radio", name: "durability", id: "dur-low"} Low
           %p
             the amount of hits required to destroy shields and bases
 
-          %p
+          %p#start-group
             %button.btn.btn-default.btn-lg#cancel-new-game{ type: "button" } Cancel
             %button.btn.btn-default.btn-primary.btn-lg#start-game{ type: "button" } Start Game
 
@@ -386,4 +413,4 @@
               <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>.
             %p <a href="https://github.com/bryanbibat/homepage">Fork this on Github</a>
     %script{:type => "text/javascript", :src => "//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"}\
-    %script{:type => "text/javascript", :src => javascript_path("game")}\
+    %script{:type => "text/javascript", :src => javascript_path("app")}\
