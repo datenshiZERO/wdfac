@@ -257,11 +257,11 @@
               %td.score-space.best-scores{colspan: 3, rowspan: 2}
                 %h4
                   Fastest Win:
-                  %span.top-speed 0
+                  %span#top-speed 0
                   Turns
                 %h4
                   Best Score:
-                  %span.high-score 0
+                  %span#high-score 0
                 %p#game-mode
                   (Medium/Medium/Medium)
               %td#r6
@@ -410,27 +410,25 @@
             %h3 Keyboard Shortcuts
 
             %select#keyboard.form-control
-              %option{ value: "default" } Default (Left: sdf, Mid: rty, Right: jkl, Pause: space, Options: esc) 
+              %option{ value: "default" } Default (Left: sdf, Mid: tyu, Right: jkl, Pause: space, Options: esc) 
               %option{ value: "oneline" } Single Line (Left: asd, Mid: fgh, Right: jkl, Pause: space, Options: esc)
-              %option{ value: "numpad" } Numpad (Left: 789, Mid: 456, Right: 123, Pause: enter, Options: 0)
+              %option{ value: "numpad" } Numpad (Left: 741, Mid: 852, Right: 963, Pause: enter, Options: 0)
 
-              %option{ value: "lefthand" } Left Hand (Left: qwe, Mid: asd, Right: zxc, Pause: space, Options: esc)
+              %option{ value: "lefthand" } Left Hand (Left: qaz, Mid: wsx, Right: edc, Pause: space, Options: esc)
  
           %p#start-group
             %button.btn.btn-default.btn-lg#cancel-new-game{ type: "button" } Cancel
             %button.btn.btn-default.btn-primary.btn-lg#start-game{ type: "button" } Start Game
 
-
-
       .row
-        .col-lg-12-
+        .col-lg-12
           .footer
             %p.copyright
               Copyright &copy;2014
               %a{:href => "http://bryanbibat.net"} Bryan Bibat
             %p.powered
-              Made with <a href="http://getbootstrap.com/">Bootstrap</a> and
-              <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a>.
-            %p <a href="https://github.com/bryanbibat/homepage">Fork this on Github</a>
+              Made with <a href="http://getbootstrap.com/">Bootstrap</a>, 
+              <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> and a bunch of JS libraries.
+            %p <a href="https://github.com/datenshiZERO/wdfac">Fork this on Github</a>
     %script{:type => "text/javascript", :src => "//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"}\
     %script{:type => "text/javascript", :src => javascript_path("app")}\

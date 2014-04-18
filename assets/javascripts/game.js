@@ -1,3 +1,5 @@
+var Store = new Persist.Store("WDFAC");
+
 var Game = {
   initialize: function() {
     this.retrieveSettings();
@@ -20,6 +22,7 @@ var Game = {
     this.player2Score = 0;
     this.clearAllSprites();
     this.updateScoreDisplay();
+    this.showTopScore();
   },
   retrieveSettings: function() {
     if ($("label.active input[name=difficulty]").attr("id") == "dif-easy") {
@@ -89,7 +92,6 @@ var Game = {
       this.wallpaper = false;
     }
 
-    $("#game-mode").text("(" + (this.wallpaper ? "Auto/" : "" ) + this.difficulty + "/" + this.speed + "/" + this.durability + ")");
 
   },
   setKeyboardShortcuts: function() {
@@ -569,6 +571,16 @@ var Game = {
       $("#player-result").html("You lost!");
       this.ended = true;
       clearInterval(this.intervalId);
+      // save record even on loss
+      var highScore = Store.get(this.gameMode() + "-turns");
+      if (highScore == null || isNaN(highScore)) {
+        highScore = 0;
+      }
+      var score = (this.player1Score * 3) + (this.draws);
+      if (highScore < score) {
+        $("#high-score").text(score);
+        Store.set(this.gameMode() + "-score", score)
+      }
     } else if (this.health["player1"]["base"] < baseHealth[this.durability] ) {
       $("#player-base").html("Your base is taking<br>damage!");
     } 
@@ -576,9 +588,46 @@ var Game = {
       $("#enemy-result").html("You win!");
       this.ended = true;
       clearInterval(this.intervalId);
+
+      // save record
+      var topSpeed = Store.get(this.gameMode() + "-turns");
+      if (topSpeed == null || isNaN(topSpeed)) {
+        topSpeed = 0;
+      }
+      if (topSpeed == 0 || topSpeed > this.ticks) {
+        $("#top-speed").text(this.ticks);
+        Store.set(this.gameMode() + "-turns", this.ticks)
+      }
+      var highScore = Store.get(this.gameMode() + "-turns");
+      if (highScore == null || isNaN(highScore)) {
+        highScore = 0;
+      }
+      var score = (this.player1Score * 3) + (this.draws);
+      if (highScore < score) {
+        $("#high-score").text(score);
+        Store.set(this.gameMode() + "-score", score)
+      }
     } else if (this.health["player2"]["base"] < baseHealth[this.durability]) {
       $("#enemy-base").html("You're dealing damage<br>to the enemy base!");
     }
+  },
+  gameMode: function() {
+    return (this.wallpaper ? "Auto/" : "" ) + this.difficulty + "/" + this.speed + "/" + this.durability
+  },
+  showTopScore: function() {
+    $("#game-mode").text("(" + this.gameMode() + ")");
+
+    var topSpeed = Store.get(this.gameMode() + "-turns");
+    if (topSpeed == null || isNaN(topSpeed)) {
+      topSpeed = 0;
+    }
+    $("#top-speed").text(topSpeed);
+
+    var highScore = Store.get(this.gameMode() + "-score");
+    if (highScore == null || isNaN(highScore)) {
+      highScore = 0;
+    }
+    $("#high-score").text(highScore);
   },
   draw: function() {
     if (this.paused === true || this.ended === true || this.started === false) return;
