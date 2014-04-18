@@ -401,14 +401,14 @@ var Game = {
       $("#enemy-shields").html("You have destroyed<br>all shields!");
     }
     if (this.health["player1"]["base"] < 1) {
-      $("#player-base").html("<span class='end-result'>You lost!</span>");
+      $("#player-result").html("You lost!");
       this.ended = true;
       clearInterval(this.intervalId);
     } else if (this.health["player1"]["base"] < 10) {
       $("#player-base").html("Your base is taking<br>damage!");
     } 
     if (this.health["player2"]["base"] < 1) {
-      $("#enemy-base").html("<span class='end-result'>You win!</span>");
+      $("#enemy-result").html("You win!");
       this.ended = true;
       clearInterval(this.intervalId);
     } else if (this.health["player2"]["base"] < 10) {
