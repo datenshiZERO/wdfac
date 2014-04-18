@@ -7,95 +7,15 @@
     %link{:href=>"//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", :rel=>"stylesheet"}
     %link{:href=>"//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", :rel=>"stylesheet"}
     %title WDFAC
-    %meta{:content => "A portfolio website of a software engineer", :name => "description"}/
-    %meta{:content => "Bryan Bibat | Robot Zombie Software Developer", :property => "og:title"}/
-    %meta{:content => "A portfolio website of a software engineer", :property => "og:description"}/
+    %meta{:content => "Reverse Lane Defense with Rock-Paper-Scissors creeps", :name => "description"}/
+    %meta{:content => "WDFAC", :property => "og:title"}/
+    %meta{:content => "Reverse Lane Defense with Rock-Paper-Scissors creeps", :property => "og:description"}/
     %meta{:content => "website", :property => "og:type"}/
-    %meta{:content => "http://bryanbibat.net/", :property => "og:url"}/
+    %meta{:content => "https://datenshizero.github.io/wdfac", :property => "og:url"}/
+    %meta{:content => image_path("opengraph.png"), :property => "og:image"}/
     %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
-    :css
-      td { 
-        background: #d18b47;
-        text-align: center;
-      }
-      .fa-sun-o {
-        color: #d18b47;
-      }
-      td.r-draw {
-        background: lightyellow;
-      }
-      td.r-draw i.fa-sun-o {
-        color: red;
-      }
-      td.r-win {
-        background: green;
-      }
-      td.r-win i.fa-sun-o {
-        color: green;
-      }
-      td.r-lose {
-        background: red;
-      }
-      td.r-lose i.fa-sun-o {
-        color: red;
-      }
-      td.score-space {
-        background: white;
-      }
+    %link{:rel => "stylesheet", :href => stylesheet_path('app') } 
 
-      .fa-shield, .fa-ban {
-        color: gray;
-      }
-      .pl {
-        color: white;
-      }
-      div.controls {
-        text-align: center;
-        margin-bottom: 10px;
-      }
-      #game-options, .footer {
-        text-align: center;
-      }
-      .footer {
-        margin-top: 50px;
-        text-align: center;
-      }
-      .player-health, .enemy-health {
-        background: #AF8C6A;
-      }
-      .player-health h3, .enemy-health h3, .score-space h3 {
-        margin-top: 10px;
-        margin-bottom: 15px;
-      }
-      .player-health {
-        color: white;
-      }
-      .player-health .fa-shield {
-        color: white;
-      }
-      .enemy-health {
-        color: #333;
-      }
-      .enemy-health .fa-shield {
-        color: #333;
-      }
-      td.score-space {
-        background: #E7C29D;
-      }
-      .end-result {
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size: 170%;
-      }
-      #game-board, #cancel-new-game, #advanced {
-        display: none;
-      }
-      #start-group {
-        margin-top: 30px;
-      }
-        
-
-    // %meta{:content => image_path("opengraph.png"), :property => "og:image"}/
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     .navbar.navbar-default.navbar-static-top
@@ -361,6 +281,16 @@
               %label.btn.btn-default
                 %input{type: "radio", name: "move-bot", id: "bot-scissors", value: "scissors"}
                   %i.fa.fa-scissors.fa-lg
+          %hr
+          .rules
+            %h3 Rules
+            %p
+              Select the correct creeps to spawn on your turn and overwhelm your opponent.
+            %p
+              Paper defeats Rock. Scissors defeat Paper. Rock defeats Scissors.
+            %p
+              Click the play button to start the game.
+
 
       .row#game-options
         .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2
