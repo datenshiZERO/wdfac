@@ -409,11 +409,12 @@
 
             %h3 Keyboard Shortcuts
 
-            %select.form-control
-              %option{ value: "default" } Left: SDF, Mid: RTY, Right: JKL
-              %option{ value: "oneline" } Left: ASD, Mid: FGH, Right: JKL
-              %option{ value: "keypad" } Left: 789, Mid: 456, Right: 123
-              %option{ value: "onehand" } Left: QWE, Mid: ASD, Right: ZXC
+            %select#keyboard.form-control
+              %option{ value: "default" } Default (Left: sdf, Mid: rty, Right: jkl, Pause: space, Options: esc) 
+              %option{ value: "oneline" } Single Line (Left: asd, Mid: fgh, Right: jkl, Pause: space, Options: esc)
+              %option{ value: "numpad" } Numpad (Left: 789, Mid: 456, Right: 123, Pause: enter, Options: 0)
+
+              %option{ value: "lefthand" } Left Hand (Left: qwe, Mid: asd, Right: zxc, Pause: space, Options: esc)
  
           %p#start-group
             %button.btn.btn-default.btn-lg#cancel-new-game{ type: "button" } Cancel

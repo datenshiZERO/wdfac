@@ -1,6 +1,7 @@
 var Game = {
   initialize: function() {
     this.retrieveSettings();
+    this.setKeyboardShortcuts();
     this.lanes = { 
       player1: { top: [], mid: [], bot: [] },
       player2: { top: [], mid: [], bot: [] }
@@ -90,6 +91,72 @@ var Game = {
 
     $("#game-mode").text("(" + (this.wallpaper ? "Auto/" : "" ) + this.difficulty + "/" + this.speed + "/" + this.durability + ")");
 
+  },
+  setKeyboardShortcuts: function() {
+    var keymap = {
+      "default" : {
+        "tr" : "s", "tp" : "d", "ts" : "f",
+        "mr" : "t", "mp" : "y", "ms" : "u",
+        "rr" : "j", "rp" : "k", "rs" : "l",
+        "p" : "space", "o" : "esc"
+      },
+      "oneline" : {
+        "tr" : "a", "tp" : "s", "ts" : "d",
+        "mr" : "f", "mp" : "g", "ms" : "h",
+        "rr" : "j", "rp" : "k", "rs" : "l",
+        "p" : "space", "o" : "esc"
+      },
+      "numpad" : {
+        "tr" : "7", "tp" : "4", "ts" : "1",
+        "mr" : "8", "mp" : "5", "ms" : "2",
+        "rr" : "9", "rp" : "6", "rs" : "3",
+        "p" : "enter", "o" : "0"
+      },
+      "lefthand" : {
+        "tr" : "q", "tp" : "a", "ts" : "z",
+        "mr" : "w", "mp" : "s", "ms" : "x",
+        "rr" : "e", "rp" : "d", "rs" : "c",
+        "p" : "space", "o" : "esc"
+      }
+    }
+    var keymapChoice = $("#keyboard").val();
+    if (keymap[keymapChoice] == undefined) {
+      keymapChoice = "default";
+    }
+
+    Mousetrap.bind(keymap[keymapChoice]["tr"], function() {
+      $("#top-rock").click();
+    });
+    Mousetrap.bind(keymap[keymapChoice]["tp"], function() {
+      $("#top-paper").click();
+    });
+    Mousetrap.bind(keymap[keymapChoice]["ts"], function() {
+      $("#top-scissors").click();
+    });
+    Mousetrap.bind(keymap[keymapChoice]["mr"], function() {
+      $("#mid-rock").click();
+    });
+    Mousetrap.bind(keymap[keymapChoice]["mp"], function() {
+      $("#mid-paper").click();
+    });
+    Mousetrap.bind(keymap[keymapChoice]["ms"], function() {
+      $("#mid-scissors").click();
+    });
+    Mousetrap.bind(keymap[keymapChoice]["rr"], function() {
+      $("#bot-rock").click();
+    });
+    Mousetrap.bind(keymap[keymapChoice]["rp"], function() {
+      $("#bot-paper").click();
+    });
+    Mousetrap.bind(keymap[keymapChoice]["rs"], function() {
+      $("#bot-scissors").click();
+    });
+    Mousetrap.bind(keymap[keymapChoice]["p"], function() {
+      $("#pause").click();
+    });
+    Mousetrap.bind(keymap[keymapChoice]["o"], function() {
+      $("#options").click();
+    });
   },
   laneList: ["top", "mid", "bot"],
   lanesAbbr: {top: "l", mid: "m", bot: "r"},
