@@ -82,7 +82,14 @@ var Game = {
       this.durability = "Medium";
     }
 
-    $("#game-mode").text("(" + this.difficulty + "/" + this.speed + "/" + this.durability + ")");
+    if ($("#wallpaper").attr("checked") != undefined) {
+      this.wallpaper = true;
+    } else {
+      this.wallpaper = false;
+    }
+
+    $("#game-mode").text("(" + (this.wallpaper ? "Auto/" : "" ) + this.difficulty + "/" + this.speed + "/" + this.durability + ")");
+
   },
   laneList: ["top", "mid", "bot"],
   lanesAbbr: {top: "l", mid: "m", bot: "r"},
@@ -225,9 +232,9 @@ var Game = {
     //var nextVal = { rock: "paper", paper: "scissors", scissors: "rock" }
     for (var i = 0; i < 3; i++) {
       var l = this.laneList[i];
-      if (player == "player1") {
+      if (player == "player1" && !this.wallpaper) {
         this.barracks[player][l] = this.chosenCreep(l);
-      } else if (player == "player2" && Math.random() * 100 < this.changeChance) {
+      } else if ((player == "player2" || this.wallpaper ) && Math.random() * 100 < this.changeChance) {
         this.barracks[player][l] = ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
       }
       this.lanes[player][l].push({ 
@@ -559,4 +566,10 @@ $("#options").click(function() {
 $("#cancel-new-game").click(function() {
   $("#game-options").slideUp();
   $("#game-board").slideDown();
+});
+
+$("#show-advanced").click(function() {
+  $("#show-advanced").slideUp();
+  $("#advanced").slideDown();
+  return false;
 });

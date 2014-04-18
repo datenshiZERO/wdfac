@@ -87,7 +87,7 @@
         font-weight: bold;
         font-size: 170%;
       }
-      #game-board, #cancel-new-game {
+      #game-board, #cancel-new-game, #advanced {
         display: none;
       }
       #start-group {
@@ -396,6 +396,25 @@
           %p
             the amount of hits required to destroy shields and bases
 
+          %p
+            %a#show-advanced{ href: "#" } Click to show advanced settings
+
+          #advanced
+            %h3 Wallpaper Mode
+            %form.form-inline
+              .checkbox
+                %label
+                  %input#wallpaper{ type: "checkbox" }
+                    Make the computer play against itself
+
+            %h3 Keyboard Shortcuts
+
+            %select.form-control
+              %option{ value: "default" } Left: SDF, Mid: RTY, Right: JKL
+              %option{ value: "oneline" } Left: ASD, Mid: FGH, Right: JKL
+              %option{ value: "keypad" } Left: 789, Mid: 456, Right: 123
+              %option{ value: "onehand" } Left: QWE, Mid: ASD, Right: ZXC
+ 
           %p#start-group
             %button.btn.btn-default.btn-lg#cancel-new-game{ type: "button" } Cancel
             %button.btn.btn-default.btn-primary.btn-lg#start-game{ type: "button" } Start Game
