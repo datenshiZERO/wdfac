@@ -114,6 +114,9 @@ td.score-space {
   .table > tbody > tr > td {
     padding: 4px;
   }
+  .end-result {
+    font-size: 120%;
+  }
 }
 @media all and (max-width: 400px) {
   .fa-lg {
@@ -153,5 +156,8 @@ td.score-space {
   }
   .abbr-brand {
     display: inline;
+  }
+  .end-result {
+    font-size: 100%;
   }
 }

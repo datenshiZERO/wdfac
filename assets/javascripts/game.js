@@ -64,25 +64,27 @@ var Game = {
         player1: { top: 5, mid: 10, bot: 5, base: 10 },
         player2: { top: 5, mid: 10, bot: 5, base: 10 }
       }
+      this.shieldScore = 100
+      this.winScore = 300
       this.durability = "Low";
-    } else if ($("label.active input[name=durability]").attr("id") == "dur-medium") {
-      this.health = { 
-        player1: { top: 10, mid: 20, bot: 10, base: 20 },
-        player2: { top: 10, mid: 20, bot: 10, base: 20 }
-      };
-      this.durability = "Medium";
     } else if ($("label.active input[name=durability]").attr("id") == "dur-high") {
       this.health = { 
         player1: { top: 20, mid: 30, bot: 20, base: 40 },
         player2: { top: 20, mid: 30, bot: 20, base: 40 }
       };
+      this.shieldScore = 400
+      this.winScore = 1200
       this.durability = "High";
     } else {
-      $("#dur-medium").parent().addClass("active");
+      if ($("label.active input[name=durability]") == undefined) {
+        $("#dur-medium").parent().addClass("active");
+      }
       this.health = { 
         player1: { top: 10, mid: 20, bot: 10, base: 20 },
         player2: { top: 10, mid: 20, bot: 10, base: 20 }
       };
+      this.shieldScore = 200
+      this.winScore = 600
       this.durability = "Medium";
     }
 
@@ -530,9 +532,21 @@ var Game = {
       $(".r-draw .fa-stack-1x").delay(this.animationDelay).hide();
     }, this.animationDelay * 2);
   },
+  upShields: function (player) {
+    var shields = 3;
+    if (this.health[player]["top"] == 0) { shields-- }
+    if (this.health[player]["mid"] == 0) { shields-- }
+    if (this.health[player]["bot"] == 0) { shields-- }
+    return shields;
+  },
+  currentScore: function() {
+    return (this.player1Score * 3) + (this.draws) 
+      + (this.shieldScore * (3 - this.upShields("player2")))
+      + (this.health["player2"]["base"] < 1 ? this.winScore : 0);
+  },
   updateScoreDisplay: function() {
     $("#turn").html(this.ticks);
-    $("#game-score").text((this.player1Score * 3) + (this.draws));
+    $("#game-score").text(this.currentScore());
     $("#p1base-health").text(this.health["player1"]["base"]);
     $("#p2base-health").text(this.health["player2"]["base"]);
     $("#p1shield1-health").text(this.health["player1"]["top"]);
@@ -542,10 +556,7 @@ var Game = {
     $("#p2shield2-health").text(this.health["player2"]["mid"]);
     $("#p2shield3-health").text(this.health["player2"]["bot"]);
 
-    var playerShields = 3;
-    if (this.health["player1"]["top"] == 0) { playerShields-- }
-    if (this.health["player1"]["mid"] == 0) { playerShields-- }
-    if (this.health["player1"]["bot"] == 0) { playerShields-- }
+    var playerShields = this.upShields("player1");
     if (playerShields == 2) {
       $("#player-shields").html("You've lost a shield!<br>2 remain.");
     } else if (playerShields == 1) {
@@ -553,10 +564,7 @@ var Game = {
     } else if (playerShields == 0) {
       $("#player-shields").html("You have no more<br>shields!");
     }
-    var enemyShields = 3;
-    if (this.health["player2"]["top"] == 0) { enemyShields-- }
-    if (this.health["player2"]["mid"] == 0) { enemyShields-- }
-    if (this.health["player2"]["bot"] == 0) { enemyShields-- }
+    var enemyShields = this.upShields("player2");
     if (enemyShields == 2) {
       $("#enemy-shields").html("You've destroyed a<br>shield! 2 remain.");
     } else if (enemyShields == 1) {
@@ -578,7 +586,7 @@ var Game = {
       if (highScore == null || isNaN(highScore)) {
         highScore = 0;
       }
-      var score = (this.player1Score * 3) + (this.draws);
+      var score = this.currentScore();
       if (highScore < score) {
         $("#high-score").text(score);
         Store.set(this.gameMode() + "-score", score)
@@ -604,7 +612,7 @@ var Game = {
       if (highScore == null || isNaN(highScore)) {
         highScore = 0;
       }
-      var score = (this.player1Score * 3) + (this.draws);
+      var score = this.currentScore();
       if (highScore < score) {
         $("#high-score").text(score);
         Store.set(this.gameMode() + "-score", score)
