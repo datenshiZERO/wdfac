@@ -88,8 +88,10 @@ var Game = {
 
     if ($("#wallpaper").attr("checked") != undefined) {
       this.wallpaper = true;
+      $(".controls .btn-group").hide();
     } else {
       this.wallpaper = false;
+      $(".controls .btn-group").show();
     }
 
 
@@ -572,7 +574,7 @@ var Game = {
       this.ended = true;
       clearInterval(this.intervalId);
       // save record even on loss
-      var highScore = Store.get(this.gameMode() + "-turns");
+      var highScore = Store.get(this.gameMode() + "-score");
       if (highScore == null || isNaN(highScore)) {
         highScore = 0;
       }
@@ -598,7 +600,7 @@ var Game = {
         $("#top-speed").text(this.ticks);
         Store.set(this.gameMode() + "-turns", this.ticks)
       }
-      var highScore = Store.get(this.gameMode() + "-turns");
+      var highScore = Store.get(this.gameMode() + "-score");
       if (highScore == null || isNaN(highScore)) {
         highScore = 0;
       }
@@ -619,7 +621,7 @@ var Game = {
 
     var topSpeed = Store.get(this.gameMode() + "-turns");
     if (topSpeed == null || isNaN(topSpeed)) {
-      topSpeed = 0;
+      topSpeed = "-";
     }
     $("#top-speed").text(topSpeed);
 

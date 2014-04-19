@@ -77,3 +77,81 @@ td.score-space {
 #start-group {
   margin-top: 30px;
 }
+.abbr-brand {
+  display: none;
+}
+
+@media all and (max-width: 500px) and (min-width: 401px) {
+  .fa-lg {
+    font-size: 0.6em;
+  }
+  .table p {
+    font-size: 60%;
+  }
+  .table h3, .table h4 {
+    margin: 5px 0;
+  }
+  .table h3 {
+    font-size: 90%;
+    margin: 5px 0;
+  }
+  .table h4 {
+    font-size: 70%;
+    margin: 5px 0;
+  }
+  .table h3 i.fa-lg {
+    font-size: 1.3em;
+  }
+  .btn-lg, .btn-group-lg>.btn {
+    padding: 10px 10px;
+    font-size: 10px;
+    line-height: 1.3;
+    border-radius: 4px;
+  }
+  .btn-lg .fa-lg, .btn-group-lg>.btn .fa-lg{
+    font-size: 1.5em;
+  }
+  .table > tbody > tr > td {
+    padding: 4px;
+  }
+}
+@media all and (max-width: 400px) {
+  .fa-lg {
+    font-size: 0.6em;
+  }
+  .table p {
+    font-size: 50%;
+  }
+  .table h3, .table h4 {
+    margin: 5px 0;
+  }
+  .table h3 {
+    font-size: 70%;
+    margin: 5px 0;
+  }
+  .table h4 {
+    font-size: 60%;
+    margin: 5px 0;
+  }
+  .table h3 i.fa-lg {
+    font-size: 1.3em;
+  }
+  .btn-lg, .btn-group-lg>.btn {
+    padding: 10px 10px;
+    font-size: 10px;
+    line-height: 1.3;
+    border-radius: 4px;
+  }
+  .btn-lg .fa-lg, .btn-group-lg>.btn .fa-lg{
+    font-size: 1.5em;
+  }
+  .table > tbody > tr > td {
+    padding: 4px;
+  }
+  .full-brand {
+    display: none;
+  }
+  .abbr-brand {
+    display: inline;
+  }
+}
