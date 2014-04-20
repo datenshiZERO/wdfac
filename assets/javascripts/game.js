@@ -1,6 +1,6 @@
 var Store = new Persist.Store("WDFAC");
 
-var Game = (function(store) {
+var Game = (function (store) {
   var LANES = ["left", "mid", "right"];
   
   function Game() {
@@ -134,49 +134,52 @@ var Game = (function(store) {
 })(Store);
 
 (function($) {
-  var game;
+  $(function() {
+    var game;
+    FastClick.attach(document.body);
 
-  function pause() {
-    clearInterval(game.data.intervalId);
-    $("#pause i").removeClass("fa-pause").addClass("fa-play");
-    $("#pause").addClass("btn-danger");
-    $("#pause").off().click(resume);
-  }
+    function pause() {
+      clearInterval(game.data.intervalId);
+      $("#pause i").removeClass("fa-pause").addClass("fa-play");
+      $("#pause").addClass("btn-danger");
+      $("#pause").off().click(resume);
+    }
 
-  function resume() {
-    game.run();
-    $("#pause i").removeClass("fa-play-danger").addClass("fa-pause");
-    $("#pause").removeClass("btn-danger");
-    $("#pause").off().click(pause);
-  }
+    function resume() {
+      game.run();
+      $("#pause i").removeClass("fa-play-danger").addClass("fa-pause");
+      $("#pause").removeClass("btn-danger");
+      $("#pause").off().click(pause);
+    }
 
-  $("#pause").click( pause );
+    $("#pause").click( pause );
 
-  $("#start-game").click(function() {
-    $("#game-options").slideUp();
-    $("#game-board").slideDown();
-    $("#pause i").removeClass("fa-play-danger").addClass("fa-pause");
-    $("#pause").removeClass("btn-danger");
-    game = new Game();
-    game.run();
-    pause();
-  });
+    $("#start-game").click(function() {
+      $("#game-options").slideUp();
+      $("#game-board").slideDown();
+      $("#pause i").removeClass("fa-play-danger").addClass("fa-pause");
+      $("#pause").removeClass("btn-danger");
+      game = new Game();
+      game.run();
+      pause();
+    });
 
-  $("#options").click(function() {
-    pause();
-    $("#cancel-new-game").show();
-    $("#game-board").slideUp();
-    $("#game-options").slideDown();
-  });
+    $("#options").click(function() {
+      pause();
+      $("#cancel-new-game").show();
+      $("#game-board").slideUp();
+      $("#game-options").slideDown();
+    });
 
-  $("#cancel-new-game").click(function() {
-    $("#game-options").slideUp();
-    $("#game-board").slideDown();
-  });
+    $("#cancel-new-game").click(function() {
+      $("#game-options").slideUp();
+      $("#game-board").slideDown();
+    });
 
-  $("#show-advanced").click(function() {
-    $("#show-advanced").slideUp();
-    $("#advanced").slideDown();
-    return false;
+    $("#show-advanced").click(function() {
+      $("#show-advanced").slideUp();
+      $("#advanced").slideDown();
+      return false;
+    });
   });
 })(jQuery);

@@ -73,11 +73,11 @@
                   %i#l11-f.fa.fa-stack-1x
               %td.score-space{colspan: 3, rowspan: 2}
                 %h3 
-                  Turn: 
-                  %span#turn 0
-                %h3 
                   Score: 
                   %span#game-score 0
+                %h3 
+                  Turn: 
+                  %span#turn 0
               %td#m7
                 %span.fa-stack.fa-lg
                   %i#m7-b.fa.fa-ban.fa-stack-2x
@@ -179,12 +179,12 @@
                   %i#m2-f.fa.fa-stack-1x
               %td.score-space.best-scores{colspan: 3, rowspan: 2}
                 %h4
-                  Fastest Win:
-                  %span#top-speed 0
-                  Turns
-                %h4
                   Best Score:
                   %span#high-score 0
+                %h4
+                  Fastest:
+                  %span#top-speed 0
+                  Turns
                 %p#game-mode
                   (Medium/Medium/Medium)
               %td#r6
@@ -264,25 +264,25 @@
           .controls
             .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
               %label.btn.btn-default
-                %input{type: "radio", name: "move-top", id: "top-rock", value: "rock"}
+                %input{type: "radio", name: "move-left", id: "left-rock", value: "rock"}
                   %i.fa.fa-thumbs-up.fa-flip-horizontal.fa-lg
               %label.btn.btn-default.active
-                %input{type: "radio", name: "move-top", id: "top-paper", value: "paper"}
+                %input{type: "radio", name: "move-left", id: "left-paper", value: "paper"}
                   %i.fa.fa-file.fa-lg
               %label.btn.btn-default
-                %input{type: "radio", name: "move-top", id: "top-scissors", value: "scissors"}
+                %input{type: "radio", name: "move-left", id: "left-scissors", value: "scissors"}
                   %i.fa.fa-scissors.fa-flip-horizontal.fa-lg
             &nbsp;
             &nbsp;
             .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
               %label.btn.btn-default
-                %input{type: "radio", name: "move-bot", id: "bot-rock", value: "rock"}
+                %input{type: "radio", name: "move-right", id: "right-rock", value: "rock"}
                   %i.fa.fa-thumbs-up.fa-lg
               %label.btn.btn-default.active
-                %input{type: "radio", name: "move-bot", id: "bot-paper", value: "paper"}
+                %input{type: "radio", name: "move-right", id: "right-paper", value: "paper"}
                   %i.fa.fa-file.fa-lg
               %label.btn.btn-default
-                %input{type: "radio", name: "move-bot", id: "bot-scissors", value: "scissors"}
+                %input{type: "radio", name: "move-right", id: "right-scissors", value: "scissors"}
                   %i.fa.fa-scissors.fa-lg
           %hr
           .rules
@@ -363,5 +363,6 @@
               Made with <a href="http://getbootstrap.com/">Bootstrap</a>, 
               <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> and a bunch of JS libraries.
             %p <a href="https://github.com/datenshiZERO/wdfac">Fork this on Github</a>
-    %script{:type => "text/javascript", :src => "//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"}\
-    %script{:type => "text/javascript", :src => javascript_path("app")}\
+    %script{:type => "text/javascript", :src => "//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
+    %script{:type => "text/javascript", :src => "//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"}
+    %script{:type => "text/javascript", :src => javascript_path("app")}

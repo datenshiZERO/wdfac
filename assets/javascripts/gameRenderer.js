@@ -211,8 +211,11 @@ var GameRenderer = (function() {
         $("#" + loc).addClass(_data.results[loc]);
 
         // erase existing sprite on shield/base hit
-        if ($("#" + loc + "-b.fa-ban").length > 0) {
-          $("#" + loc + "-f").delay(data.animationDelay).hide();
+        if (( _data.results[loc] === "r-lose" && $.inArray(loc, ["l1", "m1", "r1"]) !== -1 ) ||
+          ( _data.results[loc] === "r-win" && $.inArray(loc, ["l15", "m7", "r15"]) !== -1 )) {
+          if ($("#" + loc + "-b.fa-ban").length > 0) {
+            $("#" + loc + "-f").delay(data.animationDelay).hide();
+          }
         }
 
         if (( _data.results[loc] === "r-win" && $.inArray(loc, ["l10", "m6", "r10"]) !== -1 ) ||
@@ -268,15 +271,16 @@ var GameRenderer = (function() {
   };
 
   GameRenderer.prototype.showTopScore = function(data) {
+    $("#game-mode").text("(" + data.gameMode() + ")");
     $("#high-score").text(data.getHighScore());
     $("#top-speed").text(data.getTopSpeed());
   };
 
   GameRenderer.prototype.displayEndResult = function(data) {
-    if (data.health["player2"]["base"] < 1) {
-      $("#enemy-result").html("You win!");
+    if (data.health["player1"]["base"] < 1) {
+      $("#player-result").html("You lost!");
     } else if (data.health["player2"]["base"] < 1) {
-      $("#enemy-result").html("You win!");
+      $("#enemy-result").html("You won!");
     }
     this.showTopScore(data);
   }

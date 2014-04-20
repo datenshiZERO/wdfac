@@ -9,8 +9,11 @@ var GameData = (function() {
     };
     this.barracks = { 
       player1: { left: "paper", mid: "paper", right: "paper" },
-      player2: { left: "paper", mid: "paper", right: "paper" }
+      player2: {}
     };
+    for (var i = 0; i < 3; i++) {
+      this.barracks["player2"][LANES[i]] = ["rock", "paper", "scissors"][Math.floor(Math.random() * 3)];
+    }
     this.results = {};
     this.turn = 0;
     this.draws = 0;
@@ -104,7 +107,7 @@ var GameData = (function() {
   GameData.INITIAL_VALUES = {
     difficulty: {
       Easy: { chance: 20 },
-      Medium: { chance: 50 },
+      Medium: { chance: 40 },
       Hard: { chance: 100 }
     },
     speed: {
@@ -134,8 +137,8 @@ var GameData = (function() {
       },
       High: {
         sideShield: 20,
-        midShield: 30,
-        base: 40
+        midShield: 40,
+        base: 50
       }
     }
   };
