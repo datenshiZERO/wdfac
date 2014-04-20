@@ -16,7 +16,7 @@ Make a game that:
 
 ## Why?
 
-I've wanted to make a minimalist browser game for quite some time now, both as a way to practice things outside my comfort zone as a back-end dev (ie. game, front-end, mobile stuff), and to have something I can play (and enjoy) on my phone that I could proudly call my own. My [initial attempt][https://github.com/datenshiZERO/bad] turned out to be too ambitious and I went nowhere with it.
+I've wanted to make a minimalist browser game for quite some time now, both as a way to practice things outside my comfort zone as a back-end dev (ie. game, front-end, mobile stuff), and to have something I can play (and enjoy) on my phone that I could proudly call my own. My [initial attempt](https://github.com/datenshiZERO/bad) turned out to be too ambitious and I went nowhere with it.
 
 Then came [2048](http://gabrielecirulli.github.io/2048/). Drama-filled history aside, 2048 reminded us that simple rules and gameplay can be better than overcomplicated mechanics.
 
