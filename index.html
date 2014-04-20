@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class='container main-container'>
+        <div class='container main-container'>
       <div class='row' id='game-board'>
         <div class='col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2'>
           <table class='table table-bordered'>
@@ -93,12 +93,12 @@
               </td>
               <td class='score-space' colspan='3' rowspan='2'>
                 <h3>
-                  Turn:
-                  <span id='turn'>0</span>
-                </h3>
-                <h3>
                   Score:
                   <span id='game-score'>0</span>
+                </h3>
+                <h3>
+                  Turn:
+                  <span id='turn'>0</span>
                 </h3>
               </td>
               <td id='m7'>
@@ -248,13 +248,13 @@
               </td>
               <td class='score-space best-scores' colspan='3' rowspan='2'>
                 <h4>
-                  Fastest Win:
-                  <span id='top-speed'>0</span>
-                  Turns
-                </h4>
-                <h4>
                   Best Score:
                   <span id='high-score'>0</span>
+                </h4>
+                <h4>
+                  Fastest:
+                  <span id='top-speed'>0</span>
+                  Turns
                 </h4>
                 <p id='game-mode'>
                   (Medium/Medium/Medium)
@@ -375,17 +375,17 @@
           <div class='controls'>
             <div class='btn-group btn-group-lg' data-toggle='buttons'>
               <label class='btn btn-default'>
-                <input id='top-rock' name='move-top' type='radio' value='rock'>
+                <input id='left-rock' name='move-left' type='radio' value='rock'>
                   <i class='fa fa-thumbs-up fa-flip-horizontal fa-lg'></i>
                 </input>
               </label>
               <label class='btn btn-default active'>
-                <input id='top-paper' name='move-top' type='radio' value='paper'>
+                <input id='left-paper' name='move-left' type='radio' value='paper'>
                   <i class='fa fa-file fa-lg'></i>
                 </input>
               </label>
               <label class='btn btn-default'>
-                <input id='top-scissors' name='move-top' type='radio' value='scissors'>
+                <input id='left-scissors' name='move-left' type='radio' value='scissors'>
                   <i class='fa fa-scissors fa-flip-horizontal fa-lg'></i>
                 </input>
               </label>
@@ -394,17 +394,17 @@
             &nbsp;
             <div class='btn-group btn-group-lg' data-toggle='buttons'>
               <label class='btn btn-default'>
-                <input id='bot-rock' name='move-bot' type='radio' value='rock'>
+                <input id='right-rock' name='move-right' type='radio' value='rock'>
                   <i class='fa fa-thumbs-up fa-lg'></i>
                 </input>
               </label>
               <label class='btn btn-default active'>
-                <input id='bot-paper' name='move-bot' type='radio' value='paper'>
+                <input id='right-paper' name='move-right' type='radio' value='paper'>
                   <i class='fa fa-file fa-lg'></i>
                 </input>
               </label>
               <label class='btn btn-default'>
-                <input id='bot-scissors' name='move-bot' type='radio' value='scissors'>
+                <input id='right-scissors' name='move-right' type='radio' value='scissors'>
                   <i class='fa fa-scissors fa-lg'></i>
                 </input>
               </label>
