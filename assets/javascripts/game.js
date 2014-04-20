@@ -4,8 +4,8 @@ var Game = (function (store) {
   var LANES = ["left", "mid", "right"];
   
   function Game() {
-    this.interface = new GameInterface();
-    this.data = new GameData(this.interface.getSettings(), store);
+    this.gameInterface = new GameInterface();
+    this.data = new GameData(this.gameInterface.getSettings(), store);
     this.renderer = new GameRenderer(this.data);
   }
 
@@ -105,13 +105,14 @@ var Game = (function (store) {
 
   Game.prototype.update = function() {
     this.moveCreeps();
-    this.spawnCreeps(this.interface.getChosenCreeps());
+    this.spawnCreeps(this.gameInterface.getChosenCreeps());
     this.resolveCreepBattles();
     this.data.turn++;
   };
 
   Game.prototype.checkEndConditions = function() {
-    if (this.data.health["player1"]["base"] < 1 || this.data.health["player2"]["base"] < 1) {
+    if (this.data.health["player1"]["base"] < 1 || 
+        this.data.health["player2"]["base"] < 1) {
       this.data.updateHighScore();
       if (this.data.health["player2"]["base"] < 1) {
         this.data.updateTopSpeed();
