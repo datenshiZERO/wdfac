@@ -33,6 +33,7 @@ As mentioned above, the game has to be minimalist. So instead of HTML5 game libr
 * **[Bootstrap](http://getbootstrap.com/)** - Same thing with jQuery. I'm here to practice basic JS, not worry about responsive design. Glyphicons not used to reduce the downloaded files.
 * **[PersistJS](http://pablotron.org/software/persist-js/)** - I could've gone with cookies for local storage, but a bit of searching led me to this small library that allows you to use non-cookie stores like localStorage without even knowing it's there.
 * **[Mousetrap](http://craig.is/killing/mice)** - Keyboard shortcuts are a must especially at higher difficulties.
+* **[Fastclick](http://ftlabs.github.io/fastclick/)** - Eliminates 300ms mobile click lag.
 * **[Bootstrap CDN](http://www.bootstrapcdn.com/)**, **[cdnjs](http://cdnjs.com/)**, and **[Github Pages](https://pages.github.com/)** - for fast serving of files
 
 In addition, I used a bunch of Ruby libraries to handle asset precompilation and live-reloading. See `Gemfile` for more details.
