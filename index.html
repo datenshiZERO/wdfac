@@ -18,6 +18,16 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+  </head>
+  <body>
+    <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
     <div class='navbar navbar-default navbar-static-top'>
       <div class='container'>
         <div class='navbar-header'>
@@ -29,7 +39,7 @@
         </div>
       </div>
     </div>
-        <div class='container main-container'>
+    <div class='container main-container'>
       <div class='row' id='game-board'>
         <div class='col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2'>
           <table class='table table-bordered'>
@@ -527,7 +537,7 @@
               })();
             </script>
             <p>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-text="Play WDFAC, a DotA inspired game where battles are decided by Rock-Paper-Scissors!">Tweet</a>
+              <div class="fb-share-button" data-type="button"></div> <a href="https://twitter.com/share" class="twitter-share-button" data-text="Play WDFAC, a DotA inspired game where battles are decided by Rock-Paper-Scissors!">Tweet</a>
               <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
             </p>
             <p><a href="https://github.com/datenshiZERO/wdfac">Fork this on Github</a></p>
@@ -553,5 +563,5 @@
     </script>
     <noscript><p><img src="http://analytics.bryanbibat.net/piwik.php?idsite=12" style="border:0;" alt="" /></p></noscript>
     <!-- End Piwik Code -->
-  </head>
+  </body>
 </html>
