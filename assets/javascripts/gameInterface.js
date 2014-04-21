@@ -11,7 +11,7 @@ var GameInterface = (function() {
     if ($("label.active input[name=speed]").length === 0) {
       $("#spd-medium").parent().addClass("active");
     }
-    if ($("label.active input[name=durability]").length === 0) {
+    if ($("label.active input[name=duration]").length === 0) {
       $("#dur-medium").parent().addClass("active");
     }
   }
@@ -25,6 +25,8 @@ var GameInterface = (function() {
       settings.difficulty = "Easy";
     } else if ($("label.active input[name=difficulty]").prop("id") === "dif-hard") {
       settings.difficulty = "Hard";
+    } else if ($("label.active input[name=difficulty]").prop("id") === "dif-harder") {
+      settings.difficulty = "Harder";
     } else {
       settings.difficulty = "Medium";
     }
@@ -37,12 +39,16 @@ var GameInterface = (function() {
       settings.speed = "Medium";
     }
 
-    if ($("label.active input[name=durability]").prop("id") === "dur-low") {
-      settings.durability = "Low";
-    } else if ($("label.active input[name=durability]").prop("id") === "dur-high") {
-      settings.durability = "High";
+    if ($("label.active input[name=duration]").prop("id") === "dur-sprint") {
+      settings.duration = "Sprint";
+    } else if ($("label.active input[name=duration]").prop("id") === "dur-short") {
+      settings.duration = "Short";
+    } else if ($("label.active input[name=duration]").prop("id") === "dur-long") {
+      settings.duration = "Long";
+    } else if ($("label.active input[name=duration]").prop("id") === "dur-epic") {
+      settings.duration = "Epic";
     } else {
-      settings.durability = "Medium";
+      settings.duration = "Medium";
     }
 
     settings.wallpaper = $("#wallpaper").prop("checked");
@@ -51,6 +57,7 @@ var GameInterface = (function() {
     if ($.inArray(settings.keymap, ["default", "oneline", "numpad", "lefthand"]) === -1) {
       settings.keymap = "default";
     }
+    settings.showHint = $("#show-hint").prop("checked");
     return settings;
   };
 

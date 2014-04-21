@@ -81,22 +81,36 @@ td.score-space {
   display: none;
 }
 
+.fb-share-button > span {
+  vertical-align: baseline !important;
+}
+
+.hint {
+  display: none;
+}
+
+@media all and (max-width: 500px) {
+  .hint, #hint-prompt, #keyboard, #kb-header {
+    display: none !important;
+  }
+}
+
 @media all and (max-width: 500px) and (min-width: 401px) {
   .fa-lg {
-    font-size: 0.6em;
+    font-size: 0.9em;
   }
   .table p {
-    font-size: 60%;
+    font-size: 65%;
   }
   .table h3, .table h4 {
     margin: 5px 0;
   }
   .table h3 {
-    font-size: 90%;
+    font-size: 100%;
     margin: 5px 0;
   }
   .table h4 {
-    font-size: 70%;
+    font-size: 90%;
     margin: 5px 0;
   }
   .table h3 i.fa-lg {
@@ -120,7 +134,7 @@ td.score-space {
 }
 @media all and (max-width: 400px) {
   .fa-lg {
-    font-size: 0.6em;
+    font-size: 0.8em;
   }
   .table p {
     font-size: 50%;
@@ -129,11 +143,11 @@ td.score-space {
     margin: 5px 0;
   }
   .table h3 {
-    font-size: 70%;
+    font-size: 80%;
     margin: 5px 0;
   }
   .table h4 {
-    font-size: 60%;
+    font-size: 70%;
     margin: 5px 0;
   }
   .table h3 i.fa-lg {
@@ -149,7 +163,7 @@ td.score-space {
     font-size: 1.5em;
   }
   .table > tbody > tr > td {
-    padding: 4px;
+    padding: 2px;
   }
   .full-brand {
     display: none;

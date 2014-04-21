@@ -9,70 +9,50 @@ var GameRenderer = (function() {
     this.showTopScore(data);
   }
 
-  GameRenderer.prototype.setKeyboardShortcuts = function(keymapChoice) {
-    var keymap = {
-      "default" : {
-        "lr" : "s", "lp" : "d", "ls" : "f",
-        "mr" : "t", "mp" : "y", "ms" : "u",
-        "rr" : "j", "rp" : "k", "rs" : "l",
-        "p" : "space", "o" : "esc"
-      },
-      "oneline" : {
-        "lr" : "a", "lp" : "s", "ls" : "d",
-        "mr" : "f", "mp" : "g", "ms" : "h",
-        "rr" : "j", "rp" : "k", "rs" : "l",
-        "p" : "space", "o" : "esc"
-      },
-      "numpad" : {
-        "lr" : "7", "tp" : "4", "ls" : "1",
-        "mr" : "8", "mp" : "5", "ms" : "2",
-        "rr" : "9", "rp" : "6", "rs" : "3",
-        "p" : "enter", "o" : "0"
-      },
-      "lefthand" : {
-        "lr" : "q", "lp" : "a", "ls" : "z",
-        "mr" : "w", "mp" : "s", "ms" : "x",
-        "rr" : "e", "rp" : "d", "rs" : "c",
-        "p" : "space", "o" : "esc"
-      }
+  GameRenderer.KEYMAP = {
+    "default" : {
+      "left-rock" : "s", "left-paper" : "d", "left-scissors" : "f",
+      "mid-rock" : "r", "mid-paper" : "t/y", "mid-scissors" : "u",
+      "right-rock" : "j", "right-paper" : "k", "right-scissors" : "l",
+      "pause" : "space", "options" : "esc"
+    },
+    "oneline" : {
+      "left-rock" : "a", "left-paper" : "s", "left-scissors" : "d",
+      "mid-rock" : "f", "mid-paper" : "g", "mid-scissors" : "h",
+      "right-rock" : "j", "right-paper" : "k", "right-scissors" : "l",
+      "pause" : "space", "options" : "esc"
+    },
+    "numpad" : {
+      "left-rock" : "7", "left-paper" : "4", "left-scissors" : "1",
+      "mid-rock" : "8", "mid-paper" : "5", "mid-scissors" : "2",
+      "right-rock" : "9", "right-paper" : "6", "right-scissors" : "3",
+      "pause" : "enter", "options" : "0"
+    },
+    "lefthand" : {
+      "left-rock" : "q", "left-paper" : "a", "left-scissors" : "z",
+      "mid-rock" : "w", "mid-paper" : "s", "mid-scissors" : "x",
+      "right-rock" : "e", "right-paper" : "d", "right-scissors" : "c",
+      "pause" : "space", "options" : "esc"
     }
-    if (keymap[keymapChoice] == undefined) {
+  };
+
+  GameRenderer.prototype.setKeyboardShortcuts = function(keymapChoice) {
+    if (GameRenderer.KEYMAP[keymapChoice] == undefined) {
       keymapChoice = "default";
     }
+    var kmap = GameRenderer.KEYMAP[keymapChoice];
 
-    Mousetrap.bind(keymap[keymapChoice]["lr"], function() {
-      $("#left-rock").click();
-    });
-    Mousetrap.bind(keymap[keymapChoice]["lp"], function() {
-      $("#left-paper").click();
-    });
-    Mousetrap.bind(keymap[keymapChoice]["ls"], function() {
-      $("#left-scissors").click();
-    });
-    Mousetrap.bind(keymap[keymapChoice]["mr"], function() {
-      $("#mid-rock").click();
-    });
-    Mousetrap.bind(keymap[keymapChoice]["mp"], function() {
-      $("#mid-paper").click();
-    });
-    Mousetrap.bind(keymap[keymapChoice]["ms"], function() {
-      $("#mid-scissors").click();
-    });
-    Mousetrap.bind(keymap[keymapChoice]["rr"], function() {
-      $("#right-rock").click();
-    });
-    Mousetrap.bind(keymap[keymapChoice]["rp"], function() {
-      $("#right-paper").click();
-    });
-    Mousetrap.bind(keymap[keymapChoice]["rs"], function() {
-      $("#right-scissors").click();
-    });
-    Mousetrap.bind(keymap[keymapChoice]["p"], function() {
-      $("#pause").click();
-    });
-    Mousetrap.bind(keymap[keymapChoice]["o"], function() {
-      $("#options").click();
-    });
+    for (var id in kmap) {
+      var keys = kmap[id].split("/");
+      for (var i = 0; i < keys.length; i++) {
+        (function(key, iid) {
+          Mousetrap.bind(key, function() {
+            $("#" + iid).click();
+          });
+        })(keys[i], id);
+      }
+      $("#" + id + "-hint").text(kmap[id]);
+    }
   };
 
   GameRenderer.prototype.hideOrDisplayButtons = function(data) {
@@ -80,6 +60,12 @@ var GameRenderer = (function() {
       $(".controls .btn-group").hide();
     } else {
       $(".controls .btn-group").show();
+    }
+    console.log(data.showHint);
+    if (data.showHint) {
+      $(".hint").show();
+    } else {
+      $(".hint").hide();
     }
   };
 
@@ -221,10 +207,10 @@ var GameRenderer = (function() {
         if (( _data.results[loc] === "r-win" && $.inArray(loc, ["l10", "m6", "r10"]) !== -1 ) ||
           ( _data.results[loc] === "r-lose" && $.inArray(loc, ["l6", "m2", "r6"]) !== -1 )) {
 
-          _this.removeDestroyedShield(_data, loc);
-          if ($("#" + loc + "-b.fa-shield, #" + loc + "-b.fa-ban").length > 0) {
+          if ($("#" + loc + "-b.fa-shield").length > 0) {
             $("#" + loc + "-f").delay(data.animationDelay).hide();
           }
+          _this.removeDestroyedShield(_data, loc);
 
         }
       }
@@ -271,7 +257,7 @@ var GameRenderer = (function() {
   };
 
   GameRenderer.prototype.showTopScore = function(data) {
-    $("#game-mode").text("(" + data.gameMode() + ")");
+    $("#game-mode").text("(" + data.gameMode().split("/").join(", ") + ")");
     $("#high-score").text(data.getHighScore());
     $("#top-speed").text(data.getTopSpeed());
   };

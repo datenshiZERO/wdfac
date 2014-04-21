@@ -245,46 +245,57 @@
           .controls
             %button.btn.btn-default.btn-lg#options
               %i.fa.fa-gears.fa-lg
+              %span#options-hint.hint
             &nbsp;
             &nbsp;
             .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
               %label.btn.btn-default
                 %input{type: "radio", name: "move-mid", id: "mid-rock", value: "rock"}
                   %i.fa.fa-thumbs-up.fa-rotate-270.fa-lg
+                  %span#mid-rock-hint.hint
               %label.btn.btn-default.active
                 %input{type: "radio", name: "move-mid", id: "mid-paper", value: "paper"}
                   %i.fa.fa-file.fa-lg
+                  %span#mid-paper-hint.hint
               %label.btn.btn-default
                 %input{type: "radio", name: "move-mid", id: "mid-scissors", value: "scissors"}
                   %i.fa.fa-scissors.fa-rotate-270.fa-lg
+                  %span#mid-scissors-hint.hint
             &nbsp;
             &nbsp;
             %button#pause.btn.btn-default.btn-lg
               %i.fa.fa-pause.fa-lg
+              %span#pause-hint.hint
 
           .controls
             .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
               %label.btn.btn-default
                 %input{type: "radio", name: "move-left", id: "left-rock", value: "rock"}
                   %i.fa.fa-thumbs-up.fa-flip-horizontal.fa-lg
+                  %span#left-rock-hint.hint
               %label.btn.btn-default.active
                 %input{type: "radio", name: "move-left", id: "left-paper", value: "paper"}
                   %i.fa.fa-file.fa-lg
+                  %span#left-paper-hint.hint
               %label.btn.btn-default
                 %input{type: "radio", name: "move-left", id: "left-scissors", value: "scissors"}
                   %i.fa.fa-scissors.fa-flip-horizontal.fa-lg
+                  %span#left-scissors-hint.hint
             &nbsp;
             &nbsp;
             .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
               %label.btn.btn-default
                 %input{type: "radio", name: "move-right", id: "right-rock", value: "rock"}
                   %i.fa.fa-thumbs-up.fa-lg
+                  %span#right-rock-hint.hint
               %label.btn.btn-default.active
                 %input{type: "radio", name: "move-right", id: "right-paper", value: "paper"}
                   %i.fa.fa-file.fa-lg
+                  %span#right-paper-hint.hint
               %label.btn.btn-default
                 %input{type: "radio", name: "move-right", id: "right-scissors", value: "scissors"}
                   %i.fa.fa-scissors.fa-lg
+                  %span#right-scissors-hint.hint
           %hr
           .rules
             %h3 Rules
@@ -307,6 +318,8 @@
               %input{type: "radio", name: "difficulty", id: "dif-medium"} Medium
             %label.btn.btn-default
               %input{type: "radio", name: "difficulty", id: "dif-hard"} Hard
+            %label.btn.btn-default
+              %input{type: "radio", name: "difficulty", id: "dif-harder"} Harder
           %p
             the enemy changes their creeps more often at harder difficulty
           %h3 Speed
@@ -318,17 +331,21 @@
             %label.btn.btn-default
               %input{type: "radio", name: "speed", id: "spd-fast"} Fast
           %p
-            how fast the creeps move and are spawned
-          %h3 Durability
+            how fast the creeps spawn and move
+          %h3 Game Length
           .btn-group.btn-group-lg{ "data-toggle" => "buttons" }
             %label.btn.btn-default
-              %input{type: "radio", name: "durability", id: "dur-high"} High
-            %label.btn.btn-default.active
-              %input{type: "radio", name: "durability", id: "dur-medium"} Medium
+              %input{type: "radio", name: "duration", id: "dur-epic"} Epic
             %label.btn.btn-default
-              %input{type: "radio", name: "durability", id: "dur-low"} Low
+              %input{type: "radio", name: "duration", id: "dur-long"} Long
+            %label.btn.btn-default.active
+              %input{type: "radio", name: "duration", id: "dur-medium"} Medium
+            %label.btn.btn-default
+              %input{type: "radio", name: "duration", id: "dur-short"} Short
+            %label.btn.btn-default
+              %input{type: "radio", name: "duration", id: "dur-sprint"} Sprint
           %p
-            the amount of hits required to destroy shields and bases
+            longer games increase the amount of hits required to destroy shields and bases
 
           %p
             %a#show-advanced{ href: "#" } Click to show advanced settings
@@ -341,14 +358,20 @@
                   %input#wallpaper{ type: "checkbox" }
                     Make the computer play against itself
 
-            %h3 Keyboard Shortcuts
+            %h3#kb-header Keyboard Shortcuts
 
             %select#keyboard.form-control
-              %option{ value: "default" } Default (Left: sdf, Mid: tyu, Right: jkl, Pause: space, Options: esc) 
+              %option{ value: "default" } Default (Left: sdf, Mid: r[t|y]u, Right: jkl, Pause: space, Options: esc) 
               %option{ value: "oneline" } Single Line (Left: asd, Mid: fgh, Right: jkl, Pause: space, Options: esc)
               %option{ value: "numpad" } Numpad (Left: 741, Mid: 852, Right: 963, Pause: enter, Options: 0)
 
               %option{ value: "lefthand" } Left Hand (Left: qaz, Mid: wsx, Right: edc, Pause: space, Options: esc)
+
+            %form.form-inline
+              .checkbox#hint-prompt
+                %label
+                  %input#show-hint{ type: "checkbox" }
+                    Display shortcut hint next to button icon
  
           %p#start-group
             %button.btn.btn-default.btn-lg#cancel-new-game{ type: "button" } Cancel

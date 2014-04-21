@@ -29,8 +29,8 @@ var GameData = (function() {
     this.interval = GameData.INITIAL_VALUES["speed"][this.speed]["interval"];
     this.animationDelay = GameData.INITIAL_VALUES["speed"][this.speed]["animationDelay"];
 
-    this.durability = settings["durability"];
-    var initialHealth = GameData.INITIAL_VALUES["durability"][this.durability]
+    this.duration = settings["duration"];
+    var initialHealth = GameData.INITIAL_VALUES["duration"][this.duration]
     this.health = { 
       player1: { 
         left: initialHealth["sideShield"],
@@ -50,6 +50,7 @@ var GameData = (function() {
 
     this.wallpaper = settings["wallpaper"];
     this.keymap = settings["keymap"];
+    this.showHint = settings["showHint"];
   };
 
   GameData.prototype.upShields = function(player) {
@@ -61,18 +62,18 @@ var GameData = (function() {
   };
 
   GameData.prototype.baseDamaged = function(player) {
-    return this.health[player]["base"] < GameData.INITIAL_VALUES["durability"][this.durability]["base"];
+    return this.health[player]["base"] < GameData.INITIAL_VALUES["duration"][this.duration]["base"];
   };
 
   GameData.prototype.currentScore = function() {
-    var initialHealth = GameData.INITIAL_VALUES["durability"][this.durability]
+    var initialHealth = GameData.INITIAL_VALUES["duration"][this.duration]
     return (this.player1Score * 3) + (this.draws) 
       + (initialHealth["sideShield"] * (3 - this.upShields("player2")) * 20)
       + (this.health["player2"]["base"] < 1 ? initialHealth["base"] * 50 : 0);
   };
 
   GameData.prototype.gameMode = function() {
-    return (this.wallpaper ? "Auto/" : "" ) + this.difficulty + "/" + this.speed + "/" + this.durability;
+    return (this.wallpaper ? "Auto/" : "" ) + this.difficulty + "/" + this.speed + "/" + this.duration;
   },
 
   GameData.prototype.getHighScore = function() {
@@ -108,7 +109,8 @@ var GameData = (function() {
     difficulty: {
       Easy: { chance: 20 },
       Medium: { chance: 40 },
-      Hard: { chance: 100 }
+      Hard: { chance: 75 },
+      Harder: { chance: 100 }
     },
     speed: {
       Slow: {
@@ -124,8 +126,13 @@ var GameData = (function() {
         animationDelay: 200
       }
     },
-    durability: {
-      Low: {
+    duration: {
+      Sprint: {
+        sideShield: 2,
+        midShield: 5,
+        base: 5
+      },
+      Short: {
         sideShield: 5,
         midShield: 10,
         base: 10
@@ -135,10 +142,15 @@ var GameData = (function() {
         midShield: 20,
         base: 20
       },
-      High: {
+      Long: {
         sideShield: 20,
         midShield: 40,
         base: 50
+      },
+      Epic: {
+        sideShield: 40,
+        midShield: 80,
+        base: 100
       }
     }
   };
