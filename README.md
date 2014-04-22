@@ -40,4 +40,4 @@ In addition, I used a bunch of Ruby libraries to handle asset precompilation and
 
 ## Videos
 
-*To follow*
+I recorded the process of creating and refactoring this project. The list of videos can be found at my [video game streaming site](http://tv.bryanbibat.net/#wdfac).
