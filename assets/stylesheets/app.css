@@ -12,10 +12,10 @@ td.r-draw i.fa-sun-o {
   color: red;
 }
 td.r-win {
-  background: green;
+  background: #0D0;
 }
 td.r-win i.fa-sun-o {
-  color: green;
+  color: #0D0;
 }
 td.r-lose {
   background: red;
