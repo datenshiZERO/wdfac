@@ -9,6 +9,14 @@ var Game = (function (store) {
     this.renderer = new GameRenderer(this.data);
   }
 
+  Game.prototype.bindOptionToCancel = function() {
+    this.renderer.rebindOption(this.data.keymap, "cancel-new-game");
+  }
+
+  Game.prototype.rebindOption = function() {
+    this.renderer.rebindOption(this.data.keymap, "options");
+  }
+
   Game.prototype.moveCreeps = function() {
     var player = "player" + (this.data.turn % 2 + 1);
     for (var i = 0; i < 3; i++) {
@@ -139,6 +147,10 @@ var Game = (function (store) {
     var game;
     FastClick.attach(document.body);
 
+    Mousetrap.bind("enter", function() {
+      $("#start-game").click();
+    });
+
     function pause() {
       clearInterval(game.data.intervalId);
       $("#pause i").removeClass("fa-pause").addClass("fa-play");
@@ -166,6 +178,7 @@ var Game = (function (store) {
     });
 
     $("#options").click(function() {
+      game.bindOptionToCancel();
       pause();
       $("#cancel-new-game").show();
       $("#game-board").slideUp();
@@ -175,6 +188,7 @@ var Game = (function (store) {
     $("#cancel-new-game").click(function() {
       $("#game-options").slideUp();
       $("#game-board").slideDown();
+      game.rebindOption();
     });
 
     $("#show-advanced").click(function() {

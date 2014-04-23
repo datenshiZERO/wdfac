@@ -26,7 +26,7 @@ var GameRenderer = (function() {
       "left-rock" : "7", "left-paper" : "4", "left-scissors" : "1",
       "mid-rock" : "8", "mid-paper" : "5", "mid-scissors" : "2",
       "right-rock" : "9", "right-paper" : "6", "right-scissors" : "3",
-      "pause" : "enter", "options" : "0"
+      "pause" : "+", "options" : "0"
     },
     "lefthand" : {
       "left-rock" : "q", "left-paper" : "a", "left-scissors" : "z",
@@ -55,13 +55,23 @@ var GameRenderer = (function() {
     }
   };
 
+  GameRenderer.prototype.rebindOption = function(keymapChoice, id) {
+    var keys = GameRenderer.KEYMAP[keymapChoice]["options"].split("/");
+    for (var i = 0; i < keys.length; i++) {
+      (function(key, iid) {
+        Mousetrap.bind(key, function() {
+          $("#" + iid).click();
+        });
+      })(keys[i], id);
+    }
+  }
+
   GameRenderer.prototype.hideOrDisplayButtons = function(data) {
     if (data.wallpaper) {
       $(".controls .btn-group").hide();
     } else {
       $(".controls .btn-group").show();
     }
-    console.log(data.showHint);
     if (data.showHint) {
       $(".hint").show();
     } else {
