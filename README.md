@@ -11,22 +11,22 @@ Make a game that:
 
 * Works on the browser, whether it's my PC, my iPad, and my mobile phone. There should be no slowdowns whatsoever on the latter platforms.
 * Less than 300KB total download, gzipped, not including analytics and social media sharing buttons.
-* Can be played as both a high-APM game, or a slow cerebral planning game. Can also play itself, that is, you can set it to be like a "wallpaper".
+* Can be played as both a high-APM game, or a slow cerebral planning game. Can also play itself, that is, you can set it to be like a "wallpaper" and watch the computer go back and forth against itself.
 * Allows both keyboard and touch input.
 
 ## Why?
 
-I've wanted to make a minimalist browser game for quite some time now, both as a way to practice things outside my comfort zone as a back-end dev (ie. game, front-end, mobile stuff), and to have something I can play (and enjoy) on my phone that I could proudly call my own. My [initial attempt](https://github.com/datenshiZERO/bad) turned out to be too ambitious and I went nowhere with it.
+I've wanted to make a simple browser game for quite some time now, both as a way to practice things outside my comfort zone as a back-end dev (ie. game, front-end, mobile stuff), and to have something I can play (and enjoy) on my phone that I could proudly call my own. My [initial attempt](https://github.com/datenshiZERO/bad) turned out to be too ambitious and I went nowhere with it.
 
 Then came [2048](http://gabrielecirulli.github.io/2048/). Drama-filled history aside, 2048 reminded us that simple rules and gameplay can be better than overcomplicated mechanics.
 
-Long story short, I ended up thinking of making a parody of DotA-like games, oversimplifying the gameplay down to rock-paper-scissors battles.
+Long story short, I ended up thinking of making a parody of DotA-like and PvZ-like games, oversimplifying the gameplay down to rock-paper-scissors battles.
 
-(I have nothing against those games; it's just that Twitch is practically my TV nowadays, and having to wade through and uninteresting LoL, DotA, and Hearthstone channels before you get to more interesting stuff, I have to do *something* related to it to channel my annoyance.)
+*(I have nothing against those games; it's just that Twitch is practically my TV nowadays, and having to wade through and uninteresting LoL, DotA, and HearthStone channels before you get to more interesting stuff, I have to do* something *related to it to channel my annoyance.)*
 
 ## Tools Used
 
-As mentioned above, the game has to be minimalist. So instead of HTML5 game libraries, I used stuff that's more at home with web designers than game devs:
+As mentioned above, the game has to be as simple as possible. So instead of HTML5 game libraries, I used stuff that's more at home with web designers than game devs:
 
 * **[Font Awesome](http://fortawesome.github.io/Font-Awesome/)** - As the game's name implies, all of the "sprites" in the game are actually Font Awesome icons. So no need for me to make my own hi-res sprites.
 * **[jQuery](http://jquery.com/)** - I know, I know, the cool kids are using stuff like Angular or plain JS. But this practice isn't about figuring out stuff like animation and modern cross-browser coding - I don't have time for that. So I just went with jQuery for animation and data retrieval.
