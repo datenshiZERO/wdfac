@@ -50,7 +50,7 @@ var GameInterface = (function() {
     settings.wallpaper = $("#wallpaper").prop("checked");
 
     settings.keymap = $("#keyboard").val();
-    if ($.inArray(settings.keymap, ["default", "oneline", "numpad", "lefthand"]) === -1) {
+    if ($.inArray(settings.keymap, ["default", "oneline", "numpad", "lefthand", "lefthand-vertical", "dvorak"]) === -1) {
       settings.keymap = "default";
     }
     settings.showHint = $("#show-hint").prop("checked");

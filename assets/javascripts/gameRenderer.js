@@ -27,9 +27,21 @@ var GameRenderer = (function() {
       "pause" : "+", "options" : "0"
     },
     "lefthand" : {
+      "left-rock" : "q", "left-paper" : "w", "left-scissors" : "e",
+      "mid-rock" : "a", "mid-paper" : "s", "mid-scissors" : "d",
+      "right-rock" : "z", "right-paper" : "x", "right-scissors" : "c",
+      "pause" : "space", "options" : "esc"
+    },
+    "lefthand-vertical" : {
       "left-rock" : "q", "left-paper" : "a", "left-scissors" : "z",
       "mid-rock" : "w", "mid-paper" : "s", "mid-scissors" : "x",
       "right-rock" : "e", "right-paper" : "d", "right-scissors" : "c",
+      "pause" : "space", "options" : "esc"
+    },
+    "dvorak" : {
+      "left-rock" : "o", "left-paper" : "e", "left-scissors" : "u",
+      "mid-rock" : "p", "mid-paper" : "y/f", "mid-scissors" : "g",
+      "right-rock" : "h", "right-paper" : "t", "right-scissors" : "n",
       "pause" : "space", "options" : "esc"
     }
   };
