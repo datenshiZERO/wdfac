@@ -125,13 +125,13 @@ var GameData = (function() {
     },
     duration: {
       Sprint: {
-        sideShield: 2,
-        midShield: 5,
-        base: 5
+        sideShield: 1,
+        midShield: 2,
+        base: 4
       },
       Short: {
-        sideShield: 5,
-        midShield: 10,
+        sideShield: 4,
+        midShield: 8,
         base: 10
       },
       Medium: {

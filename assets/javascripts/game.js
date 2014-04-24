@@ -116,9 +116,13 @@ var Game = (function (store) {
     this.data.turn++;
   };
 
+  Game.prototype.isGameOver = function() {
+    return this.data.health["player1"]["base"] < 1 || 
+        this.data.health["player2"]["base"] < 1;
+  }
+
   Game.prototype.checkEndConditions = function() {
-    if (this.data.health["player1"]["base"] < 1 || 
-        this.data.health["player2"]["base"] < 1) {
+    if (this.isGameOver()) {
       this.data.updateHighScore();
       if (this.data.health["player2"]["base"] < 1) {
         this.data.updateTopSpeed();
@@ -169,7 +173,7 @@ var Game = (function (store) {
       $("#game-options").slideUp();
       $("#game-board").slideDown();
       $("#pause i").removeClass("fa-play-danger").addClass("fa-pause");
-      $("#pause").removeClass("btn-danger");
+      $("#pause").show().removeClass("btn-danger");
       game = new Game();
       game.run();
       pause();

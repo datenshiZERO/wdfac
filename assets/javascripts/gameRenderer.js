@@ -168,6 +168,7 @@ var GameRenderer = (function() {
   GameRenderer.prototype.drawSprites = function(data) {
     if (data.turn < 1) return;
     var player = "player" + ((data.turn - 1) % 2 + 1);
+
     for (var i = 0; i < 3; i++) {
       var l = LANES[i];
       for (var j = 0; j < data.lanes[player][l].length; j++) {
@@ -180,13 +181,18 @@ var GameRenderer = (function() {
           var addClass = GameRenderer.SPRITE_CLASSES[direction][creep.value][player] +
             (player == "player1" ? " pl" : "");
 
+          // erase the sprite at the new position of the sprite
+          // then draw the sprite at the new position
           (function(iid, clearClass, addClass, animationDelay) {
             var drawFunc = function() {
-              $(iid).removeClass(clearClass)
+              $(iid).hide().removeClass(clearClass)
                 .addClass(addClass)
                 .fadeIn(animationDelay);
             }
-            if ($(iid).is(":visible")) {
+            // only fade out sprites the current player owns
+            if ($(iid).is(":visible") && 
+                  ((player == "player1" && $(iid).is(".pl")) ||
+                  (player == "player2" && !$(iid).is(".pl")))) {
               $(iid).fadeOut(animationDelay, drawFunc);
             } else {
               setTimeout(drawFunc, animationDelay);
@@ -198,8 +204,11 @@ var GameRenderer = (function() {
         }
       }
     }
+
     var _data = data;
     var _this = this;
+
+    // set background for battle result squares
     setTimeout(function() {
       for (var loc in _data.results) {
         $("#" + loc).addClass(_data.results[loc]);
@@ -223,7 +232,7 @@ var GameRenderer = (function() {
         }
       }
       $(".r-draw .fa-stack-1x").delay(data.animationDelay).hide();
-    }, data.animationDelay * 2);
+    }, data.animationDelay * 1.2);
   };
 
   GameRenderer.prototype.updateScoreDisplay = function(data) {
@@ -277,6 +286,8 @@ var GameRenderer = (function() {
       $("#enemy-result").html("You won!");
     }
     this.showTopScore(data);
+    $(".controls .btn-group").hide();
+    $("#pause").hide();
   }
 
   GameRenderer.prototype.draw = function(data) {

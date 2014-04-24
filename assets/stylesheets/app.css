@@ -86,6 +86,7 @@ td.score-space {
 }
 
 .hint {
+  color: #aaa;
   display: none;
 }
 

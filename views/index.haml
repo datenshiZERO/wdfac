@@ -13,16 +13,18 @@
     %meta{:content => "website", :property => "og:type"}/
     %meta{:content => "https://datenshizero.github.io/wdfac", :property => "og:url"}/
     %meta{:content => image_path("opengraph.png"), :property => "og:image"}/
-    %link{:href => "/favicon.ico", :rel => "shortcut icon"}/
+    %link{:href => "./favicon.ico", :rel => "shortcut icon"}/
     %link{:rel => "stylesheet", :href => stylesheet_path('app') } 
 
     /[if lt IE 9]
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   %body
+    - if ENV['RACK_ENV'] == 'production'
+      #fb-root
     .navbar.navbar-default.navbar-static-top
       .container
         .navbar-header
-          %a.navbar-brand{:href => "#"}
+          %a.navbar-brand{:href => "./"}
             %span.full-brand Wave Defense of Font Awesome Creeps
             %span.abbr-brand WDFAC
             \- RPS
@@ -368,7 +370,7 @@
             %form.form-inline
               .checkbox#hint-prompt
                 %label
-                  %input#show-hint{ type: "checkbox" }
+                  %input#show-hint{ type: "checkbox", checked: "checked" }
                     Display shortcut hint next to button icon
  
           %p#start-group
@@ -384,7 +386,46 @@
             %p.powered
               Made with <a href="http://getbootstrap.com/">Bootstrap</a>, 
               <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> and a bunch of JS libraries.
-            %p <a href="https://github.com/datenshiZERO/wdfac">Fork this on Github</a>
+            - if ENV['RACK_ENV'] == 'production'
+              %p
+                .g-plusone{"data-size" => "medium"}
+                %a.twitter-share-button{"data-text" => "Play WDFAC, a DotA inspired game where battles are decided by Rock-Paper-Scissors!", href: "https://twitter.com/share"} Tweet
+                .fb-share-button{"data-type" => "button_count"}
+            %p 
+              %a{ href: "https://github.com/datenshiZERO/wdfac" } Fork this on Github
     %script{:type => "text/javascript", :src => "//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js"}
     %script{:type => "text/javascript", :src => "//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js"}
     %script{:type => "text/javascript", :src => javascript_path("app")}
+    - if ENV['RACK_ENV'] == 'production'
+      / Piwik
+      :javascript
+        var _paq = _paq || [];
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u=(("https:" == document.location.protocol) ? "https" : "http") + "://analytics.bryanbibat.net/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', 12]);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+          g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      %noscript
+        %p
+          %img{:alt => "", :src => "http://analytics.bryanbibat.net/piwik.php?idsite=12", :style => "border:0;"}/
+      / End Piwik Code
+      :javascript
+        !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');/ Place this tag after the last +1 button tag.
+      :javascript
+        (function() {
+          var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+          po.src = 'https://apis.google.com/js/platform.js';
+          var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+      :javascript
+        (function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
