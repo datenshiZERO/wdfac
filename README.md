@@ -9,9 +9,9 @@ A DotA-inspired simplified reverse lane defense browser game.
 
 Make a game that:
 
-* Works on the browser, whether it's my PC, my iPad, and my mobile phone. There should be no slowdowns whatsoever on the latter platforms.
+* Works on the browser, whether it's my PC, my iPad, and my mobile phone. There should be very little to no slowdowns whatsoever on the latter platforms.
 * Less than 300KB total download, gzipped, not including analytics and social media sharing buttons.
-* Can be played as both a high-APM game, or a slow cerebral planning game. Can also play itself, that is, you can set it to be like a "wallpaper" and watch the computer go back and forth against itself.
+* Can be played as both a high-APM game, or a slow cerebral planning game, or a button-mashing game. Can also play itself, that is, you can set it to be like a "wallpaper" and watch the computer go back and forth against itself.
 * Allows both keyboard and touch input.
 
 ## Why?
