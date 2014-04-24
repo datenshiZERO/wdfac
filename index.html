@@ -14,17 +14,17 @@
     <meta content='https://datenshizero.github.io/wdfac' property='og:url'>
     <meta content='https://datenshizero.github.io/wdfac/assets/opengraph-b4c338e3675879c7c85ee66a0ee861b8.png' property='og:image'>
     <link href='./favicon.ico' rel='shortcut icon'>
-    <link href='//datenshizero.github.io/wdfac/assets/app-da67f7420382687a426ff7f44564157f.css' rel='stylesheet'>
+    <link href='//datenshizero.github.io/wdfac/assets/app-07664af5971ed16a14e84a67d4bc89b5.css' rel='stylesheet'>
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body>
-    <div id="fb-root"></div>
+    <div id='fb-root'></div>
     <div class='navbar navbar-default navbar-static-top'>
       <div class='container'>
         <div class='navbar-header'>
-          <a class='navbar-brand' href='/'>
+          <a class='navbar-brand' href='./'>
             <span class='full-brand'>Wave Defense of Font Awesome Creeps</span>
             <span class='abbr-brand'>WDFAC</span>
             - RPS
@@ -456,9 +456,6 @@
             <label class='btn btn-default'>
               <input id='dif-hard' name='difficulty' type='radio'>Hard</input>
             </label>
-            <label class='btn btn-default'>
-              <input id='dif-harder' name='difficulty' type='radio'>Harder</input>
-            </label>
           </div>
           <p>
             the enemy changes their creeps more often at harder difficulty
@@ -523,7 +520,7 @@
             <form class='form-inline'>
               <div class='checkbox' id='hint-prompt'>
                 <label>
-                  <input id='show-hint' type='checkbox'>
+                  <input checked='checked' id='show-hint' type='checkbox'>
                     Display shortcut hint next to button icon
                   </input>
                 </label>
@@ -548,20 +545,22 @@
               <a href="http://fortawesome.github.io/Font-Awesome/">Font Awesome</a> and a bunch of JS libraries.
             </p>
             <p>
-              <div class="g-plusone" data-size="medium"></div>
-              <a href="https://twitter.com/share" class="twitter-share-button" data-text="Play WDFAC, a DotA inspired game where battles are decided by Rock-Paper-Scissors!">Tweet</a>
-              <div class="fb-share-button" data-type="button_count"></div>
+              <div class='g-plusone' data-size='medium'></div>
+              <a class='twitter-share-button' data-text='Play WDFAC, a DotA inspired game where battles are decided by Rock-Paper-Scissors!' href='https://twitter.com/share'>Tweet</a>
+              <div class='fb-share-button' data-type='button_count'></div>
             </p>
-            <p><a href="https://github.com/datenshiZERO/wdfac">Fork this on Github</a></p>
+            <p>
+              <a href='https://github.com/datenshiZERO/wdfac'>Fork this on Github</a>
+            </p>
           </div>
         </div>
       </div>
     </div>
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.0/jquery.min.js' type='text/javascript'></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js" type="text/javascript"></script>
-    <script src='//datenshizero.github.io/wdfac/assets/app-8f2c2ad33a767f1e0fa83bee52034bec.js' type='text/javascript'></script>
+    <script src='//cdnjs.cloudflare.com/ajax/libs/fastclick/0.6.11/fastclick.min.js' type='text/javascript'></script>
+    <script src='//datenshizero.github.io/wdfac/assets/app-cd4280e2a8890a055e4770a66e9d50b3.js' type='text/javascript'></script>
     <!-- Piwik -->
-    <script type="text/javascript">
+    <script>
       var _paq = _paq || [];
       _paq.push(['trackPageView']);
       _paq.push(['enableLinkTracking']);
@@ -573,23 +572,30 @@
         g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
       })();
     </script>
-    <noscript><p><img src="http://analytics.bryanbibat.net/piwik.php?idsite=12" style="border:0;" alt="" /></p></noscript>
+    <noscript>
+      <p>
+        <img alt='' src='http://analytics.bryanbibat.net/piwik.php?idsite=12' style='border:0;'>
+      </p>
+    </noscript>
     <!-- End Piwik Code -->
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    <!-- Place this tag after the last +1 button tag. -->
-    <script type="text/javascript">
+    <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');/ Place this tag after the last +1 button tag.
+    </script>
+    <script>
       (function() {
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         po.src = 'https://apis.google.com/js/platform.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       })();
     </script>
-    <script>(function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+    <script>
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
   </body>
 </html>
