@@ -1,6 +1,4 @@
 var GameRenderer = (function() {
-  var LANES = ["left", "mid", "right"];
-  
   function GameRenderer(data) {
     this.setKeyboardShortcuts(data.keymap);
     this.hideOrDisplayButtons(data);

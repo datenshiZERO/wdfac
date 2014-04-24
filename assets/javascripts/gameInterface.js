@@ -1,6 +1,4 @@
 var GameInterface = (function() {
-  var LANES = ["left", "mid", "right"];
-
   function GameInterface() {
   }
 
@@ -25,8 +23,6 @@ var GameInterface = (function() {
       settings.difficulty = "Easy";
     } else if ($("label.active input[name=difficulty]").prop("id") === "dif-hard") {
       settings.difficulty = "Hard";
-    } else if ($("label.active input[name=difficulty]").prop("id") === "dif-harder") {
-      settings.difficulty = "Harder";
     } else {
       settings.difficulty = "Medium";
     }

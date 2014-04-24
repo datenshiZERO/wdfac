@@ -1,8 +1,6 @@
 var Store = new Persist.Store("WDFAC");
 
 var Game = (function (store) {
-  var LANES = ["left", "mid", "right"];
-  
   function Game() {
     this.gameInterface = new GameInterface();
     this.data = new GameData(this.gameInterface.getSettings(), store);

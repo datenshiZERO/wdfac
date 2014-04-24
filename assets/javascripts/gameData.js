@@ -1,6 +1,4 @@
 var GameData = (function() {
-  var LANES = ["left", "mid", "right"];
-
   function GameData(settings, store) {
     this.importSettings(settings);
     this.lanes = { 
@@ -109,8 +107,7 @@ var GameData = (function() {
     difficulty: {
       Easy: { chance: 20 },
       Medium: { chance: 40 },
-      Hard: { chance: 75 },
-      Harder: { chance: 100 }
+      Hard: { chance: 100 },
     },
     speed: {
       Slow: {
